@@ -18,20 +18,38 @@
 
 .card-title {
   border-bottom: 1px solid $blue;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
 }
 
 .card-title h3 {
   font-size: 1.3rem;
   margin: 0;
 }
+
 .card-title p {
   font-size: 0.9rem;
+  margin-top: 0.5rem;
 }
 
-.card-event-img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
+.card-category {
+  background: #30475E;
+  border-radius: 10px;
+  padding: 2px 10px;
+  font-size: 12px;
+  color: white;
+}
+
+.card-avatar {
+  position: absolute;
+  right: 0;
+  top: 20px;
+}
+
+.img-card-avatar {
+  border-radius: 100%;
+  width: 40px;
 }
 
 .card-event-description {
