@@ -1,8 +1,12 @@
 <%= link_to "Sportify", root_path, class: "a-root" %>
+
 <%# Build search bar HERE %>
 <div style="height: 100px; background: #30475E"></div>
 <%#  %>
+
+<%# Build map HERE %>
 <%= image_tag "map-berlin.JPG", class: "map" %>
+<%#  %>
 <div class="category-banner" style="background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1) ), url(<%= asset_path 'tennis-court.jpg' %>)">
   <h2>Tennis</h2>
 </div>
@@ -15,6 +19,31 @@
               <div class="card-title">
                 <div>
                   <h3>Event name for 5 people</h3>
+                  <p><i class="fas fa-running"></i> <span class="card-category">Tennis</span></p>
+                </div>
+                <div class="card-avatar">
+                  <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "img-card-avatar" %>
+                </div>
+              </div>
+              <div class="card-details">
+                  <div>
+                    <p><i class="far fa-calendar-alt"></i> 01/01/2021</p>
+                    <p><i class="fas fa-map-pin"></i> xx km away</p>
+                  </div>
+                  <div class="card-price">
+                    <p>Skill level</p>
+                    <p>x / xx </p>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-3">
+          <div class="card-event">
+            <div class="card-event-description">
+              <div class="card-title">
+                <div>
+                  <h3>Tennis game 1 on 1</h3>
                   <p><i class="fas fa-running"></i> <span class="card-category">Tennis</span></p>
                 </div>
                 <div class="card-avatar">
