@@ -25,8 +25,8 @@ event1 = Event.create(
  name: "Tennis match",
  description: "Tennis practice for beginner.",
  location: "Checkpoint Charlie Berlin",
- price: "5€",
- capacity: "2",
+ price: 5,
+ capacity: 2,
  level: "beginner",
  sport: tennis,
  user: mark
