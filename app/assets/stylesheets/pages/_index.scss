@@ -1,2 +1,14 @@
 // Import page-specific CSS files here.
 @import "home";
+
+.category-banner {
+  background-size: cover;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.category-banner h2 {
+  color: white;
+}
