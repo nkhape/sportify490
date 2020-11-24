@@ -1,1 +1,9 @@
 // Specific CSS for your home-page
+html {
+    height: 100%;
+}
+body {
+    min-height: 100%;
+    background-image: url("background-image.jpg");
+    background-size: cover;
+}
