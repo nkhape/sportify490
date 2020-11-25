@@ -9,7 +9,7 @@
         <div class="search-bar" style="display:block">
             <%= simple_form_for :search, url: root_path, method: "GET", html: { class: 'form-block' } do |f| %>
             <%= f.input :location, input_html: {value: "Type your location", }, label:false %>    
-            <%= f.submit "Explore", class: "btn btn-danger btn-sm btn-block font-weight-bold" %>
+            <%= f.submit "Explore", class: "btn btn-primary btn-sm btn-block font-weight-bold" %>
             <% end %>
         </div>
     </div>
