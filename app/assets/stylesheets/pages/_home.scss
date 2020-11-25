@@ -6,8 +6,16 @@ body {
     min-height: 100%;
     background-image: url("background-image.jpg");
     background-size: cover;
+    z-index: 0;
 }
 
 .navbar-lewagon{
     display: none;
+}
+
+.opaque-cover{
+    height: 100%;
+    width: 100%;
+    color: gray;
+    z-index: 1;
 }
