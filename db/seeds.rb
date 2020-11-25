@@ -1,15 +1,10 @@
 
 Event.destroy_all
-Sport.destroy_all
 User.destroy_all
 
-puts "All sports and users are destroyed"
+puts "All events and users are destroyed"
 
-golf = Sport.create(name: "golf")
-running = Sport.create(name: "running")
-tennis = Sport.create(name: "tennis")
-swimming = Sport.create(name: "swimming")
-badminton = Sport.create(name: "badminton")
+sports = ["golf", "running", "tennis", "swimming", "badminton"]
 
 
 
@@ -27,7 +22,7 @@ event1 = Event.create(
  location: "Checkpoint Charlie Berlin",
  price: 5,
  capacity: 2,
- level: "beginner",
- sport: tennis,
+ level: 1,
+ sport: "Tennis",
  user: mark
 )
