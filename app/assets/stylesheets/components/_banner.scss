@@ -1,7 +1,9 @@
 .banner{
-    max-height: 100%;
+    height: 70vh;
 }
 
 .banner-text{
-    margin-top: 20vh;
+    height: 100%;
+    color: $blue;
+    font-family: $body-font;
 }
