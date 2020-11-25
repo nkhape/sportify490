@@ -1,12 +1,29 @@
+.navbar {
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.nav-text p {
+  font-size: 10px;
+  margin: 0 !important;
+}
+
 .navbar-lewagon {
-  justify-content: space-between;
+  justify-content: center;
   background: white;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.navbar-btn {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+.navbar-btn:active {
+  text-decoration: none;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-lewagon .navbar-btn img {
+  width: 25px;
 }
