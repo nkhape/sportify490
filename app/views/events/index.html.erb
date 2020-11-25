@@ -1,5 +1,3 @@
-<span class="title-index"><%= link_to "Sportify", root_path, class: "a-root" %></span>
-
 <%# Build search bar HERE %>
 <div style="height: 100px; background: #30475E"></div>
 <%#  %>
@@ -8,99 +6,46 @@
 <%= image_tag "map-berlin.JPG", class: "map" %>
 <%#  %>
 <div class="category-banner" style="background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1) ), url(<%= asset_path 'tennis-court.jpg' %>)">
-  <h2>Tennis</h2>
+  <h2 class="m-0">Tennis</h2>
 </div>
 
-<div class="container">
-  <div class="cards-events row">
-        <div class="col-12 col-lg-3">
-          <div class="card-event">
-            <div class="card-event-description">
-              <div class="card-title">
-                <div>
-                  <h3>Event name for 5 people</h3>
-                  <p><i class="fas fa-running"></i> <span class="card-category">Tennis</span></p>
-                </div>
-                <div class="card-avatar">
-                  <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "img-card-avatar" %>
-                </div>
-              </div>
-              <div class="card-details">
-                  <div>
-                    <p><i class="far fa-calendar-alt"></i> 01/01/2021</p>
-                    <p><i class="fas fa-map-pin"></i> xx km away</p>
-                  </div>
-                  <div class="card-price">
-                    <p>Skill level</p>
-                    <p>x / xx </p>
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-12 col-lg-3">
-          <div class="card-event">
-            <div class="card-event-description">
-              <div class="card-title">
-                <div>
-                  <h3>Tennis game 1 on 1</h3>
-                  <p><i class="fas fa-running"></i> <span class="card-category">Tennis</span></p>
-                </div>
-                <div class="card-avatar">
-                  <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "img-card-avatar" %>
-                </div>
-              </div>
-              <div class="card-details">
-                  <div>
-                    <p><i class="far fa-calendar-alt"></i> 01/01/2021</p>
-                    <p><i class="fas fa-map-pin"></i> xx km away</p>
-                  </div>
-                  <div class="card-price">
-                    <p>Skill level</p>
-                    <p>x / xx </p>
-                  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-  </div>
-</div>
-
-<% if false %>
 <div class="container">
   <div class="cards-events row">
     <% @events.each do |event| %>
-      <% if event.category == "Tennis"%>
         <div class="col-12 col-lg-3">
           <div class="card-event">
-            <%= cl_image_tag event.photo.key, alt: "Find", class: "card-event-img" %>
-            <% if policy(event).show? %>
-              <%= link_to "See item", event_path(event) %>
-            <% end %>
+          <%# UNCOMMENT ONCE SHOW IS INSTALLED <%= link_to "See item", event_path(event) %>
             <div class="card-event-description">
               <div class="card-title">
-                <h3><%= event.name.truncate(20) %></h3>
-                <p><%= event.category %></p>
+                <div>
+                  <h3><%= event.name.truncate(22) %></h3>
+                  <p><i class="fas fa-running"></i> <span class="card-category"><%= event.sport %></span></p>
+                </div>
+                <div class="card-avatar">
+                <%# Dynamically change the avatar depending on the user once cloudinary is installed %>
+                  <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "img-card-avatar" %>
+                </div>
               </div>
               <div class="card-details">
                   <div>
-                    <% if event.availability == false %>
-                      <p>Available ❌</p>
-                    <% else %>
-                      <p>Available ✔️</p>
-                    <% end %>
-                    <p><%= event.location.truncate(16) %> <%= image_tag "pin.png", width: 15 %></p>
+                    <p><i class="far fa-calendar-alt"></i> <%= event.date.strftime("%d/%m/%Y") %></p>
+                    <p><i class="fas fa-map-pin"></i> <%= event.location.truncate(22) %></p>
                   </div>
                   <div class="card-price">
-                    <p><%= event.user.name %></p>
-                    <p><%= event.price %>€</p>
+                    <% if event.level == "Beginner" %>
+                      <p class="text-success font-weight-bold"><%= event.level %></p>
+                    <% elsif event.level == "Intermediate" %>
+                      <p class="text-warning font-weight-bold"><%= event.level %></p>
+                    <% else %>
+                      <p class="text-danger font-weight-bold"><%= event.level %></p>
+                    <% end %>
+                    <%# Dynamically change the amount of bookings made for that event + add if statement to change color of text %>
+                    <p>x / <%= event.capacity %> </p>
                   </div>
               </div>
             </div>
           </div>
         </div>
       <% end %>
-    <% end %>
   </div>
 </div>
-<% end %>
