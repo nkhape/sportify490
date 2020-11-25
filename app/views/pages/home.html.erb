@@ -6,6 +6,12 @@
         <h1>Welcome to Sportify</h1>
         <h2>Meet you sports buddy...</h2>
         <h3>at the right time and the right place</h3>
+
+    <%= simple_form_for :search, url: root_path, method: "GET", html: { class: 'form-inline' } do |f| %>
+        <%= f.input :location, input_html: {value: ""} %>   
+        <%= f.submit "Search", class: "btn btn-primary" %>
+    <% end %>
+
     </div>
 
 </div>
