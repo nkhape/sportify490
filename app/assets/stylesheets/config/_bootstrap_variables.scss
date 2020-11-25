@@ -23,3 +23,22 @@ $border-radius-lg: 2px;
 $border-radius-sm: 2px;
 
 // Override other variables below!
+body {
+  color: #222831 !important;
+}
+
+.btn {
+  padding: 0.5rem 1.5rem !important;
+}
+
+.btn-lg {
+  width: 100%;
+  padding: 0.65rem 0 !important;
+  font-size: 18px !important;
+}
+
+.btn-outline-primary:active {
+  color: $black !important;
+  font-weight: bold;
+  background-color: $light-gray !important;
+}
