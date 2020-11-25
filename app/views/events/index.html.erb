@@ -34,9 +34,9 @@
                     <p><i class="fas fa-map-pin"></i> <%= event.location.truncate(22) %></p>
                   </div>
                   <div class="card-price">
-                    <% if event.level == 1 %>
+                    <% if event.level == "Beginner" %>
                       <p class="text-success font-weight-bold"><%= event.level %></p>
-                    <% elsif event.level == 2 || event.level == 3 %>
+                    <% elsif event.level == "Intermediate" %>
                       <p class="text-warning font-weight-bold"><%= event.level %></p>
                     <% else %>
                       <p class="text-danger font-weight-bold"><%= event.level %></p>
