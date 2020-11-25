@@ -1,17 +1,38 @@
 <%# <div class="opaque-cover"></div> %>
 
 <div class="banner">
-
-    <div class="container mx-auto banner-text" style="width: fit-content;">
-        <h1>Welcome to Sportify</h1>
+    <div class="container-fluid mx-auto banner-text" style="width:fit-content;">
+        <h1>Welcome to <span id="app-name">Sportify</span></h1>
         <h2>Meet you sports buddy...</h2>
         <h3>at the right time and the right place</h3>
 
-    <%= simple_form_for :search, url: root_path, method: "GET", html: { class: 'form-inline' } do |f| %>
-        <%= f.input :location, input_html: {value: ""} %>   
-        <%= f.submit "Search", class: "btn btn-primary" %>
-    <% end %>
-
+        <div class="search-bar" style="display:block">
+            <%= simple_form_for :search, url: root_path, method: "GET", html: { class: 'form-block' } do |f| %>
+            <%= f.input :location, input_html: {value: "Type your location", }, label:false %>    
+            <%= f.submit "Explore", class: "btn btn-danger btn-sm btn-block" %>
+            <% end %>
+        </div>
     </div>
 
+</div>
+
+<div class="illustrations">
+
+    <div class="container illustration-pictures d-flex justify-content-around shadow p-3 mb-5rounded">
+        <div class="illustration-card container">
+            <p>Search sporting events</p>
+            <%= image_tag("search.png") %>
+            <hr />
+        </div>
+         <div class="illustration-card container">
+            <p>Apply for interesting ones</p>
+            <%= image_tag("contact.png") %>
+            <hr />
+        </div>
+         <div class="illustration-card container">
+            <p>Make friends & have fun</p>
+            <%= image_tag("fun.png") %>
+            <hr />
+        </div>      
+    </div>
 </div>
