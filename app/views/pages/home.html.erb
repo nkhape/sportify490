@@ -3,13 +3,13 @@
 <div class="banner">
     <div class="container-fluid mx-auto banner-text" style="width:fit-content;">
         <h1>Welcome to <span id="app-name">Sportify</span></h1>
-        <h2>Meet you sports buddy...</h2>
+        <h3>Meet you sports buddy...</h3>
         <h3>at the right time and the right place</h3>
 
         <div class="search-bar" style="display:block">
             <%= simple_form_for :search, url: root_path, method: "GET", html: { class: 'form-block' } do |f| %>
             <%= f.input :location, input_html: {value: "Type your location", }, label:false %>    
-            <%= f.submit "Explore", class: "btn btn-danger btn-sm btn-block" %>
+            <%= f.submit "Explore", class: "btn btn-danger btn-sm btn-block font-weight-bold" %>
             <% end %>
         </div>
     </div>
