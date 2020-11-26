@@ -1,14 +1,16 @@
 <div class="container">
 
-  <div class="show-card" style="background-image: url(https://photoresources.wtatennis.com/photo-resources/2019/08/15/dbb59626-9254-4426-915e-57397b6d6635/tennis-origins-e1444901660593.jpg?width=1200&height=630); ">
-    <h2>Event Name</h2>
-    <h3>Level</h3>
+  <div class="show-card" style="background-image: url(<%= asset_path 'tennis-court.jpg' %>); ">
+    <div>
+      <h2><%= @event.name.truncate(22) %></h2>
+      <h3><%= @event.level %></h3>
   </div>
+    </div>
 
   <div class="d-flex justify-content-between">
     <div>
       <p>avatar</p>
-      <p>username</p>
+      <p><%= @event.user.username %></p>
     </div>
 
     <div class="d-flex">
@@ -41,7 +43,7 @@
     <p>map</p>
   </div>
 
-  <button type="button" class="btn btn-outline-primary btn-lg btn-block sticky">Send request</button>
+  <button type="button" class="btn btn-primary btn-lg btn-block sticky">Send request</button>
 
   <div>
     <p>comments</p>
