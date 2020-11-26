@@ -3,22 +3,30 @@
   position: fixed;
   bottom: 0;
   width: 100%;
+  padding: 0px;
 }
 
 .nav-text p {
   font-size: 10px;
   margin: 0 !important;
+  display: block;
+}
+
+.nav-text-active {
+  color: #30475E;
+  font-weight: bold;
 }
 
 .navbar-lewagon {
-  justify-content: center;
+  justify-content: space-around;
   background: white;
 }
 
 .navbar-btn {
   margin: 10px 0;
-  display: flex;
-  align-items: center;
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
 }
 .navbar-btn:active {
   text-decoration: none;

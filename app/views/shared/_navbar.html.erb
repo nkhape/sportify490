@@ -2,41 +2,76 @@
 <div class="navbar navbar-lewagon">
   <% if user_signed_in? %>
     <%= link_to root_path, class: "navbar-btn" do %>
-    <div><%= image_tag "home.svg", alt: "Home"%></div>
+    <% if action_name == "home" %>
+      <%= image_tag "home-active.svg", alt: "Home" %>
+      <div class="nav-text"><p class="nav-text-active">Home</p></div>
+    <% else %>
+      <%= image_tag "home.svg", alt: "Home" %>
       <div class="nav-text"><p>Home</p></div>
     <% end %>
+    <% end %>
 
     <%= link_to events_path, class: "navbar-btn" do %>
-      <%= image_tag "loupe.svg", alt: "Events"%>
+    <% if action_name == "index" %>
+      <%= image_tag "loupe-active.svg", alt: "Search" %>
+      <div class="nav-text"><p class="nav-text-active">Explore</p></div>
+    <% else %>
+      <%= image_tag "loupe.svg", alt: "Search" %>
       <div class="nav-text"><p>Explore</p></div>
     <% end %>
-
-    <%= link_to events_path, class: "navbar-btn" do %>
-      <%= image_tag "create.svg", alt: "Create event"%>
-      <div class="nav-text"><p>New event</p></div>
     <% end %>
 
     <%= link_to events_path, class: "navbar-btn" do %>
-      <%= image_tag "login.svg", alt: "Profile"%>
+    <% if action_name == "create" %>
+      <%= image_tag "create-active.svg", alt: "New event" %>
+      <div class="nav-text"><p class="nav-text-active">New event</p></div>
+    <% else %>
+      <%= image_tag "create.svg", alt: "New event" %>
+      <div class="nav-text"><p>New event</p></div>
+    <% end %>
+    <% end %>
+
+    <%= link_to destroy_user_session_path, method: :delete, class: "navbar-btn" do %>
+    <% if action_name == "sign_in" %>
+      <%= image_tag "login-active.svg", alt: "Profile" %>
+      <div class="nav-text"><p class="nav-text-active">Profile</p></div>
+    <% else %>
+      <%= image_tag "login.svg", alt: "Profile" %>
       <div class="nav-text"><p>Profile</p></div>
+    <% end %>
     <% end %>
 
     <% else %>
+
     <%= link_to root_path, class: "navbar-btn" do %>
-      <%= image_tag "home.svg", alt: "Home"%>
+    <% if action_name == "home" %>
+      <%= image_tag "home-active.svg", alt: "Home" %>
+      <div class="nav-text"><p class="nav-text-active">Home</p></div>
+    <% else %>
+      <%= image_tag "home.svg", alt: "Home" %>
       <div class="nav-text"><p>Home</p></div>
+    <% end %>
     <% end %>
 
     <%= link_to events_path, class: "navbar-btn" do %>
-      <%= image_tag "loupe.svg", alt: "Events"%>
+    <% if action_name == "index" %>
+      <%= image_tag "loupe-active.svg", alt: "Search" %>
+      <div class="nav-text"><p class="nav-text-active">Explore</p></div>
+    <% else %>
+      <%= image_tag "loupe.svg", alt: "Search" %>
       <div class="nav-text"><p>Explore</p></div>
+    <% end %>
     <% end %>
 
     <%= link_to new_user_session_path, class: "navbar-btn" do %>
+    <% if action_name == "new" %>
+      <%= image_tag "login-active.svg", alt: "Login"%>
+      <div class="nav-text"><p class="nav-text-active">Login</p></div>
+    <% else %>
       <%= image_tag "login.svg", alt: "Login"%>
       <div class="nav-text"><p>Login</p></div>
     <% end %>
-  <% end %>
+    <% end %>
 
-  
+<% end %>
 </div>
