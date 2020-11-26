@@ -1,0 +1,43 @@
+.banner{
+    height: 60vh;
+    line-height: 100px;
+}
+
+.banner-text{
+    height: 100%;
+    color: $light-gray;
+    font-family: $body-font;
+    line-height: 100px;
+    text-align: center;
+    text-shadow: 1px 1px 2px black;
+}
+
+.banner-text h1,h2,h3,h4{
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.search-bar{
+    margin-top: 10px;
+    display: block;
+}
+
+.search_location{
+    margin-bottom: 0;
+}
+
+#app-name{
+    font-family: "Pacifico";
+    color:$blue;
+    font-size: 10vh;
+}
+
+#login-button{
+    font-weight: bold;
+    text-align: right;
+    color: white !important;
+    text-decoration: none;
+}
+#login-button:hover{
+    text-decoration: none;
+}
