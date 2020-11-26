@@ -3,5 +3,5 @@ class Event < ApplicationRecord
   has_many :users, through: :bookings
   has_many :bookings
 
-  enum level: { beginner: 1, intermediate: 2, advanced: 3, pro: 4 }
+  enum level: { Beginner: 1, Intermediate: 2, Advanced: 3, Pro: 4 }
 end
