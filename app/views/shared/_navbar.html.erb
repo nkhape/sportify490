@@ -1,37 +1,77 @@
-<%# <% deactivated navbar for now, remove the if + end function to activate again %> 
-<% if action_name == true %>
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "#", class: "navbar-brand" do %>
-    <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+
+<div class="navbar navbar-lewagon">
+  <% if user_signed_in? %>
+    <%= link_to root_path, class: "navbar-btn" do %>
+    <% if action_name == "home" %>
+      <%= image_tag "home-active.svg", alt: "Home" %>
+      <div class="nav-text"><p class="nav-text-active">Home</p></div>
+    <% else %>
+      <%= image_tag "home.svg", alt: "Home" %>
+      <div class="nav-text"><p>Home</p></div>
+    <% end %>
     <% end %>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <%= link_to events_path, class: "navbar-btn" do %>
+    <% if action_name == "index" || action_name == "show" %>
+      <%= image_tag "loupe-active.svg", alt: "Search" %>
+      <div class="nav-text"><p class="nav-text-active">Explore</p></div>
+    <% else %>
+      <%= image_tag "loupe.svg", alt: "Search" %>
+      <div class="nav-text"><p>Explore</p></div>
+    <% end %>
+    <% end %>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "Home", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item dropdown">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Action", "#", class: "dropdown-item" %>
-            <%= link_to "Another action", "#", class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
+    <%= link_to new_event_path, class: "navbar-btn" do %>
+    <% if action_name == "new" %>
+      <%= image_tag "create-active.svg", alt: "New event" %>
+      <div class="nav-text"><p class="nav-text-active">New event</p></div>
+    <% else %>
+      <%= image_tag "create.svg", alt: "New event" %>
+      <div class="nav-text"><p>New event</p></div>
+    <% end %>
+    <% end %>
+
+    <%= link_to destroy_user_session_path, method: :delete, class: "navbar-btn" do %>
+    <% if action_name == "sign_in" %>
+      <%= image_tag "login-active.svg", alt: "Profile" %>
+      <div class="nav-text"><p class="nav-text-active">Profile</p></div>
+    <% else %>
+      <%= image_tag "login.svg", alt: "Profile" %>
+      <div class="nav-text"><p>Profile</p></div>
+    <% end %>
+    <% end %>
+
+    <% else %>
+
+    <%= link_to root_path, class: "navbar-btn" do %>
+    <% if action_name == "home" %>
+      <%= image_tag "home-active.svg", alt: "Home" %>
+      <div class="nav-text"><p class="nav-text-active">Home</p></div>
+    <% else %>
+      <%= image_tag "home.svg", alt: "Home" %>
+      <div class="nav-text"><p>Home</p></div>
+    <% end %>
+    <% end %>
+
+    <%= link_to events_path, class: "navbar-btn" do %>
+    <% if action_name == "index" %>
+      <%= image_tag "loupe-active.svg", alt: "Search" %>
+      <div class="nav-text"><p class="nav-text-active">Explore</p></div>
+    <% else %>
+      <%= image_tag "loupe.svg", alt: "Search" %>
+      <div class="nav-text"><p>Explore</p></div>
+    <% end %>
+    <% end %>
+
+    <%= link_to new_user_session_path, class: "navbar-btn" do %>
+    <% if action_name == "new" %>
+      <%= image_tag "login-active.svg", alt: "Login"%>
+      <div class="nav-text"><p class="nav-text-active">Login</p></div>
+    <% else %>
+      <%= image_tag "login.svg", alt: "Login"%>
+      <div class="nav-text"><p>Login</p></div>
+    <% end %>
+    <% end %>
+
 <% end %>
+</div>
