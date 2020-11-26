@@ -12,7 +12,7 @@
     <% end %>
 
     <%= link_to events_path, class: "navbar-btn" do %>
-    <% if action_name == "index" %>
+    <% if action_name == "index" || action_name == "show" %>
       <%= image_tag "loupe-active.svg", alt: "Search" %>
       <div class="nav-text"><p class="nav-text-active">Explore</p></div>
     <% else %>
