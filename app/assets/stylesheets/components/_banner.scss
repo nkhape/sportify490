@@ -22,13 +22,22 @@
     display: block;
 }
 
-#app-name{
-    font-family: "Pacifico";
-    color:white;
-    font-size: 10vh;
-}
-
 .search_location{
     margin-bottom: 0;
 }
 
+#app-name{
+    font-family: "Pacifico";
+    color:$blue;
+    font-size: 10vh;
+}
+
+#login-button{
+    font-weight: bold;
+    text-align: right;
+    color: white !important;
+    text-decoration: none;
+}
+#login-button:hover{
+    text-decoration: none;
+}

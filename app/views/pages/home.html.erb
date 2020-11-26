@@ -2,9 +2,13 @@
 
 <div class="banner">
     <div class="container-fluid mx-auto banner-text" style="width:fit-content;">
-        <h1>Welcome to <span id="app-name">Sportify</span></h1>
-        <h3>Meet you sports buddy...</h3>
-        <h3>at the right time and the right place</h3>
+
+        <div id="login-button">
+            <a href="#">Login</a>
+        </div>
+
+        <h1><span id="app-name">Sportify</span></h1>
+        <h3>Meet your buddy and go!</h3>
 
         <div class="search-bar" style="display:block">
             <%= simple_form_for :search, url: root_path, method: "GET", html: { class: 'form-block' } do |f| %>
