@@ -1,10 +1,11 @@
 class EventsController < ApplicationController
+before_action :set_event, only: [:edit, :update, :show]
+
   def index
     @events = Event.all
   end
 
   def show
-    @event = Event.find(params[:id])
   end
 
   def new
@@ -22,9 +23,12 @@ class EventsController < ApplicationController
     end
     # need to add  'authorize @listing' when we have pundit
 
+    def edit
+    end
+
     def update
       if @event.update(event_params)
-        redirect_to event_path(@event)
+        redirect_to events_path
       else
         render :edit
       end
@@ -32,6 +36,10 @@ class EventsController < ApplicationController
   end
 
   private
+
+  def set_event
+    @event = Event.find(params[:id])
+  end
 
   def event_params
     params.require(:event).permit(:name, :description, :location, :date, :price, :capacity, :level, :sport)

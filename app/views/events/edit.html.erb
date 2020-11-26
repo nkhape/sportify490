@@ -1,0 +1,14 @@
+<div class="container">
+  <h2>Edit <%= @event.name %> </h2>
+
+  <%= simple_form_for(@event) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :location %>
+    <%= f.input :date %>
+    <%= f.input :price %>
+    <%= f.input :capacity %>
+    <%= f.input :level %>
+    <%= f.button :submit %>
+  <% end %>
+</div>
