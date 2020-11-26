@@ -21,6 +21,14 @@ class EventsController < ApplicationController
       render :new
     end
     # need to add  'authorize @listing' when we have pundit
+
+    def update
+      if @event.update(event_params)
+        redirect_to event_path(@event)
+      else
+        render :edit
+      end
+    end
   end
 
   private
