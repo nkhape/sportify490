@@ -12,10 +12,11 @@ class BookingsController < ApplicationController
   # end
 
   def create
-    @booking = Booking.new(booking_params)
+    @booking = Booking.new
     @booking.user = current_user
     @event = Event.find(params[:event_id])
     @booking.event = @event
+    @booking.status = :request_sent
     if @booking.save
       redirect_to bookings_path
     else
