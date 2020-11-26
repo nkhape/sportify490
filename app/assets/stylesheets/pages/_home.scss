@@ -1,1 +1,16 @@
 // Specific CSS for your home-page
+
+.body-styling {
+    min-height: 100%;
+    background-image:linear-gradient(rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.7)), url("background-image.jpg");
+    background-size: cover;
+    z-index: 0;
+}
+
+.hr-styling{
+    width: 60%;
+    color: $red;
+    border: 2px solid $red;
+    margin-top: 4px;
+}

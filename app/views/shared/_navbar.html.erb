@@ -21,13 +21,15 @@
     <% end %>
     <% end %>
 
-    <%= link_to new_event_path, class: "navbar-btn" do %>
+    <% if policy(Event).create? %>
+      <%= link_to new_event_path, class: "navbar-btn" do %>
     <% if action_name == "new" %>
       <%= image_tag "create-active.svg", alt: "New event" %>
       <div class="nav-text"><p class="nav-text-active">New event</p></div>
     <% else %>
       <%= image_tag "create.svg", alt: "New event" %>
       <div class="nav-text"><p>New event</p></div>
+    <% end %>
     <% end %>
     <% end %>
 
