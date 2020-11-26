@@ -10,9 +10,22 @@
     text-shadow: 0 0 10px rgba(0,0,0,0.7);
     padding: 10px;
     margin-bottom: 10px;
+    position: relative;
 }
 
 .sticky {
   position: sticky;
+  bottom: 0;
+}
+
+#background-description {
+  background-color: #30475e26;
+  padding: 10px;
+}
+
+
+#sport-tag {
+  position: absolute;
+  right: 10px;
   bottom: 0;
 }
