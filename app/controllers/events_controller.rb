@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [ :show, :destroy ]
   def index
-    @events = Event.all
+    @events = policy_scope(Event)
   end
 
   def show
@@ -9,7 +9,7 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new
-    # need to add  'authorize @listing' when we have pundit
+    authorize @event
   end
 
   def create
@@ -20,7 +20,7 @@ class EventsController < ApplicationController
     else
       render :new
     end
-    # need to add  'authorize @listing' when we have pundit
+    authorize @event
   end
 
   def destroy
@@ -36,5 +36,6 @@ class EventsController < ApplicationController
 
   def set_event
     @event = Event.find(params[:id])
+    authorize @event
   end
 end
