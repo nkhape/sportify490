@@ -7,17 +7,6 @@ class EventsController < ApplicationController
   def show
   end
 
-  def destroy
-    @event = Event.destroy
-    redirect_to events_path
-  end
-
-  private
-
-  def set_event
-    @event = Event.find(params[:id])
-  end
-
   def new
     @event = Event.new
     # need to add  'authorize @listing' when we have pundit
@@ -34,9 +23,18 @@ class EventsController < ApplicationController
     # need to add  'authorize @listing' when we have pundit
   end
 
+  def destroy
+    @event.destroy
+    redirect_to events_path
+  end
+
   private
 
   def event_params
     params.require(:event).permit(:name, :description, :location, :date, :price, :capacity, :level, :sport)
+  end
+
+  def set_event
+    @event = Event.find(params[:id])
   end
 end

@@ -10,7 +10,7 @@
         <%= f.input :capacity %>
         <%= f.input :level, collection: Event.levels.map{ |l| [l.first, l.first.humanize] }, label_method: :second, value_method: :first %>
         <%= f.input :location %>
-        <%= f.button :submit, class: "btn btn-primary" %>
+        <%= f.button :submit, class: "btn btn-primary btn-lg" %>
     <% end %>
   </div>
 </div>

@@ -3,7 +3,7 @@
 <%#  %>
 
 <%# Build map HERE %>
-<%= image_tag "map-berlin.JPG", class: "map" %>
+<%= image_tag "map-berlin.JPG", width: "100%" %>
 <%#  %>
 <div class="category-banner" style="background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1) ), url(<%= asset_path 'tennis-court.jpg' %>)">
   <h2 class="m-0">Tennis</h2>
@@ -48,8 +48,4 @@
         </div>
       <% end %>
   </div>
-  <%# cut/paste these buttons on the show page %>
-      <a href="#" class="btn btn-outline-primary btn-lg mb-2">Edit this event</a>
-      <a href="#" class="btn btn-primary btn-lg mb-2">Sign up for this event</a>
-      <a href="#" class="btn btn-outline-danger btn-lg mb-2">Delete this event</a>
 </div>
