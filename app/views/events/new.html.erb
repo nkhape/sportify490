@@ -1,0 +1,16 @@
+<div>
+  <div class="container">
+    <h2 class="text-center">Create an event</h2>
+      <%= simple_form_for @event do |f| %>
+        <%= f.input :name %>
+        <%= f.input :sport, collection: ["Football", "Basketball", "Tennis", "Baseball", "American football", "Baseball", "Combat sports", "Golf", "Volleyball", "Other"] %>
+        <%= f.input :description %>
+        <%= f.input :price %>
+        <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"}%>
+        <%= f.input :capacity %>
+        <%= f.input :level, collection: Event.levels.map{ |l| [l.first, l.first.humanize] }, label_method: :second, value_method: :first %>
+        <%= f.input :location %>
+        <%= f.button :submit, class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
