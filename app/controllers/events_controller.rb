@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-before_action :set_event, only: [:edit, :update, :show]
+before_action :set_event, only: [:edit, :update, :show, :update]
 
   def index
     @events = Event.all
@@ -23,18 +23,20 @@ before_action :set_event, only: [:edit, :update, :show]
     end
     # need to add  'authorize @listing' when we have pundit
 
-    def edit
-    end
-
-    def update
-      if @event.update(event_params)
-        redirect_to events_path(@event)
-      else
-        render :edit
-      end
-    end
+    
+  end
+    
+  def edit
   end
 
+  def update
+    if @event.update(event_params)
+      redirect_to events_path(@event)
+    else
+      render :edit
+    end
+  end
+  
   private
 
   def set_event
