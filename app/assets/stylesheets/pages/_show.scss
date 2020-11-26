@@ -1,0 +1,23 @@
+// Events Show Page
+
+.show-card {
+    background-size: cover;
+    background-position: center;
+    height: 150px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    color: white;
+    text-shadow: 0 0 10px rgba(0,0,0,0.7);
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.sticky {
+  position: sticky;
+  bottom: 0;
+}
+
+.map {
+  height: 100px
+}

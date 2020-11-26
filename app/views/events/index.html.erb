@@ -1,0 +1,58 @@
+<%# Build search bar HERE %>
+<div style="height: 100px; background: #30475E"></div>
+
+<div class="container">
+  <a class="btn btn-outline-primary btn-lg my-2" data-toggle="collapse" href="#collapseMap" role="button" aria-expanded="false" aria-controls="collapseMap">
+        Show map view <i class="fas fa-map-marked-alt"></i>
+  </a>
+  <div class="collapse" id="collapseMap">
+  <%# Build map HERE %>
+  <%= image_tag "map-berlin.JPG", width: "100%" %>
+  <%#  %>
+  </div>
+</div>
+
+<div class="category-banner" style="background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1) ), url(<%= asset_path 'tennis-court.jpg' %>)">
+  <h2 class="m-0">Tennis</h2>
+</div>
+
+<div class="container">
+  <div class="cards-events row">
+    <% @events.each do |event| %>
+        <div class="col-12 col-lg-3">
+          <div class="card-event">
+          <%= link_to "See item", event_path(event) %>
+            <div class="card-event-description">
+              <div class="card-title">
+                <div>
+                  <h3><%= event.name.truncate(22) %></h3>
+                  <p><i class="fas fa-running"></i> <span class="card-category"><%= event.sport %></span></p>
+                </div>
+                <div class="card-avatar">
+                <%# Dynamically change the avatar depending on the user once cloudinary is installed %>
+                  <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "img-card-avatar" %>
+                </div>
+              </div>
+              <div class="card-details">
+                  <div>
+                    <p><i class="far fa-calendar-alt"></i> <%= event.date.strftime("%d/%m/%Y") %></p>
+                    <p><i class="fas fa-map-pin"></i> <%= event.location.truncate(22) %></p>
+                  </div>
+                  <div class="card-price">
+                    <% if event.level == "Beginner" %>
+                      <p class="text-success font-weight-bold"><%= event.level %></p>
+                    <% elsif event.level == "Intermediate" %>
+                      <p class="text-warning font-weight-bold"><%= event.level %></p>
+                    <% else %>
+                      <p class="text-danger font-weight-bold"><%= event.level %></p>
+                    <% end %>
+                    <%# Dynamically change the amount of bookings made for that event + add if statement to change color of text %>
+                    <p>x / <%= event.capacity %> </p>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+  </div>
+</div>
