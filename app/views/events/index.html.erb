@@ -1,10 +1,17 @@
 <%# Build search bar HERE %>
 <div style="height: 100px; background: #30475E"></div>
-<%#  %>
 
-<%# Build map HERE %>
-<%= image_tag "map-berlin.JPG", class: "map" %>
-<%#  %>
+<div class="container">
+  <a class="btn btn-outline-primary btn-lg my-2" data-toggle="collapse" href="#collapseMap" role="button" aria-expanded="false" aria-controls="collapseMap">
+        Show map view <i class="fas fa-map-marked-alt"></i>
+  </a>
+  <div class="collapse" id="collapseMap">
+  <%# Build map HERE %>
+  <%= image_tag "map-berlin.JPG", width: "100%" %>
+  <%#  %>
+  </div>
+</div>
+
 <div class="category-banner" style="background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1) ), url(<%= asset_path 'tennis-court.jpg' %>)">
   <h2 class="m-0">Tennis</h2>
 </div>
@@ -14,7 +21,7 @@
     <% @events.each do |event| %>
         <div class="col-12 col-lg-3">
           <div class="card-event">
-          <%# UNCOMMENT ONCE SHOW IS INSTALLED <%= link_to "See item", event_path(event) %>
+          <%= link_to "See item", event_path(event) %>
             <div class="card-event-description">
               <div class="card-title">
                 <div>

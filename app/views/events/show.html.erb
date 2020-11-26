@@ -41,12 +41,16 @@
     <p><i class="fas fa-map-marked-alt"></i> <%= @event.location.truncate(22) %></p>
   </div>
 
-  <div>
-    <p>map</p>
+ <div class="show-card" style="background-image: url(https://i.pinimg.com/originals/48/cb/39/48cb3958b9f20fc5055179f84fedbea4.jpg); ">
+    <p>The</p>
+    <p>Map</p>
+    <p>Goes</p>
+    <p>Here</p>
   </div>
 
   <button type="button" class="btn btn-primary btn-lg btn-block sticky">Send request</button>
-
+  <a href="#" class="btn btn-outline-primary btn-lg my-2">Edit this event</a>
+  <%= link_to 'Delete this event', @event, method: :delete, data: { confirm: 'Are you sure you want to delete this event?' }, class: "btn btn-outline-danger btn-lg my-2" %>
   <div>
     <p>....comments....</p>
   </div>

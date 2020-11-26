@@ -1,0 +1,13 @@
+<div class="container">
+
+  <%= simple_form_for(@event) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :location %>
+    <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"}%>
+    <%= f.input :price %>
+    <%= f.input :capacity %>
+    <%= f.input :level, collection: Event.levels.map{ |l| [l.first, l.first.humanize] }, label_method: :second, value_method: :first %>
+    <%= f.button :submit, class:"btn btn-primary"%>
+  <% end %>
+</div>
