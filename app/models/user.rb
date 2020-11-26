@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :posts
   has_many :reviews
   has_many :events, through: :bookings
+  # has_one_attached :photo
 end
