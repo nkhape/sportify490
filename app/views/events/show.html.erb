@@ -47,7 +47,8 @@
   </div>
 
   <button type="button" class="btn btn-primary btn-lg btn-block sticky">Send request</button>
-
+  <a href="#" class="btn btn-outline-primary btn-lg my-2">Edit this event</a>
+  <%= link_to 'Delete this event', @event, method: :delete, data: { confirm: 'Are you sure you want to delete this event?' }, class: "btn btn-outline-danger btn-lg my-2" %>
   <div>
     <p>comments</p>
   </div>
