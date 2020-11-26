@@ -4,6 +4,22 @@ before_action :set_event, only: [:edit, :update, :show, :update]
 
   def index
     @events = policy_scope(Event)
+    @markers = @events.geocoded.map do |event|
+      {
+        lat: event.latitude,
+        lng: event.longitude
+      }
+    end
+  end
+
+  def show
+    @events = policy_scope(Event)
+    @markers = [
+      {
+        lat: @event.latitude,
+        lng: @event.longitude
+      }
+    ]
   end
 
   def show
