@@ -8,5 +8,4 @@ class User < ApplicationRecord
   has_many :posts
   has_many :reviews
   has_many :events, through: :bookings
-  has_many :sports, through: :user_sports
 end
