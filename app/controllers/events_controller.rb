@@ -28,7 +28,7 @@ before_action :set_event, only: [:edit, :update, :show]
 
     def update
       if @event.update(event_params)
-        redirect_to events_path
+        redirect_to events_path(@event)
       else
         render :edit
       end
