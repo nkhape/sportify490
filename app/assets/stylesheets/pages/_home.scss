@@ -1,8 +1,6 @@
 // Specific CSS for your home-page
-html {
-    height: 100%;
-}
-body {
+
+.body-styling {
     min-height: 100%;
     background-image:linear-gradient(rgba(0, 0, 0, 0.7),
     rgba(0, 0, 0, 0.7)), url("background-image.jpg");
@@ -10,11 +8,7 @@ body {
     z-index: 0;
 }
 
-.navbar-lewagon{
-    display: none;
-}
-
-hr{
+.hr-styling{
     width: 60%;
     color: $red;
     border: 2px solid $red;
