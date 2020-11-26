@@ -2,6 +2,13 @@ class EventsController < ApplicationController
   before_action :set_event, only: [ :show, :destroy ]
   def index
     @events = Event.all
+
+     @markers = @events.geocoded.map do |event|
+      {
+        lat: event.latitude,
+        lng: event.longitude
+      }
+    end
   end
 
   def show
