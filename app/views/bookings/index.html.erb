@@ -1,0 +1,41 @@
+<div class="text-center">
+  <h2>My events</h2>
+</div>
+
+<div class="cards-events row">
+    <% @bookings.each do |booking| %>
+        <div class="col-12 col-lg-3">
+          <div class="card-event">
+            <div class="card-event-description">
+              <div class="card-title">
+                <div>
+                  <h3><%= booking.event.name.truncate(22) %></h3>
+                  <p><i class="fas fa-running"></i> <span class="card-category"><%= booking.event.sport %></span></p>
+                </div>
+                <div class="card-avatar">
+                <%# Dynamically change the avatar depending on the user once cloudinary is installed %>
+                  <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "img-card-avatar" %>
+                </div>
+              </div>
+              <div class="card-details">
+                  <div>
+                    <p><i class="far fa-calendar-alt"></i> <%= booking.event.date.strftime("%d/%m/%Y") %></p>
+                    <p><i class="fas fa-map-pin"></i> <%= booking.event.location.truncate(22) %></p>
+                  </div>
+                  <div class="card-price">
+                    <% if booking.event.level == "Beginner" %>
+                      <p class="text-success font-weight-bold"><%= booking.event.level %></p>
+                    <% elsif booking.event.level == "Intermediate" %>
+                      <p class="text-warning font-weight-bold"><%= booking.event.level %></p>
+                    <% else %>
+                      <p class="text-danger font-weight-bold"><%= booking.event.level %></p>
+                    <% end %>
+                    <%# Dynamically change the amount of bookings made for that event + add if statement to change color of text %>
+                    <p>x / <%= booking.event.capacity %> </p>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+  </div>

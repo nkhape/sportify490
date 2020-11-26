@@ -7,6 +7,7 @@ before_action :set_event, only: [:edit, :update, :show, :update]
   end
 
   def show
+    @booking = Booking.new
   end
 
   def new

@@ -48,7 +48,10 @@
     <p>Here</p>
   </div>
 
-  <button type="button" class="btn btn-primary btn-lg btn-block sticky">Send request</button>
+  <%= simple_form_for [@event, @booking] do |f| %>
+      <%= f.button :submit, :bookings, class: "btn btn-primary btn-lg btn-block sticky" %>
+    <% end %>
+
   <% if policy(@event).update? %>
     <a href="#" class="btn btn-outline-primary btn-lg my-2">Edit this event</a>
   <% end %>
