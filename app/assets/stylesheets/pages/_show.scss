@@ -4,6 +4,7 @@
     background-size: cover;
     background-position: center;
     height: 150px;
+    padding: 10px;
     display: flex;
     align-items: center;
     color: white;
@@ -15,4 +16,8 @@
 .sticky {
   position: sticky;
   bottom: 0;
+}
+
+.map {
+  height: 100px
 }
