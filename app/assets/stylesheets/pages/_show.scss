@@ -4,8 +4,9 @@
     background-size: cover;
     background-position: center;
     height: 150px;
+    padding: 10px;
     display: flex;
-    align-items: center;
+    align: center;
     font-size: 22px;
     color: white;
     font-weight: bolder;
@@ -15,4 +16,8 @@
 .sticky {
   position: sticky;
   bottom: 0;
+}
+
+.map {
+  height: 100px
 }
