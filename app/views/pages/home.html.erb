@@ -7,7 +7,7 @@
             <h3>Meet your buddy and go!</h3>
 
             <div class="search-bar" style="display:block">
-                <%= simple_form_for :search, url: root_path, method: "GET", html: { class: 'form-block' } do |f| %>
+                <%= simple_form_for :search, url: events_path, method: "GET", html: { class: 'form-block' } do |f| %>
                 <%= f.input :location, input_html: {placeholder: "Type your address" }, label:false %>    
                 <%= f.submit "Explore", class: "btn btn-primary btn-sm btn-block font-weight-bold"  %>
                 <% end %>
