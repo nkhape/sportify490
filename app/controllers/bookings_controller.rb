@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
   def index
     @bookings = Booking.all
     @user = current_user
-    # pundit: @bookings = policy_scope(Booking)
+    @bookings = policy_scope(Booking)
   end
 
   # def new
@@ -22,7 +22,7 @@ class BookingsController < ApplicationController
     else
       render :new
     end
-    # authorize @booking
+    authorize @booking
   end
 
   private
