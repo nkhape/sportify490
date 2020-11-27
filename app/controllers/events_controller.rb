@@ -13,16 +13,11 @@ before_action :set_event, only: [:edit, :update, :show, :update]
   end
 
   def show
-    @events = policy_scope(Event)
-    @markers = [
-      {
+    @marker = {
         lat: @event.latitude,
         lng: @event.longitude
       }
-    ]
-  end
 
-  def show
     @booking = Booking.new
   end
 
@@ -59,10 +54,6 @@ before_action :set_event, only: [:edit, :update, :show, :update]
   end
 
   private
-
-  def set_event
-    @event = Event.find(params[:id])
-  end
 
   def event_params
     params.require(:event).permit(:name, :description, :location, :date, :price, :capacity, :level, :sport)
