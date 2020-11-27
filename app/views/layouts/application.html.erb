@@ -15,11 +15,12 @@
     <%= render 'shared/flashes' %>
     <% unless action_name == "home" %>
       <%= render 'shared/homelink' %>
+      <div class="content">
     <% end %>
-    
-    <div class="content">
       <%= yield %>
+    <% unless action_name == "home" %>
     </div>
+    <% end %>
 
     <%= render 'shared/navbar' %>
   </body>
