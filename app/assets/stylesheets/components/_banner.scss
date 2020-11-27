@@ -14,7 +14,7 @@
 
 .banner-text h1,h2,h3,h4{
     padding-bottom: 10px;
-    padding-top: 10px;
+    padding-top: 50px;
 }
 
 .search-bar{
@@ -28,16 +28,6 @@
 
 #app-name{
     font-family: "Pacifico";
-    color:$blue;
+    color:$light-gray;
     font-size: 10vh;
-}
-
-#login-button{
-    font-weight: bold;
-    text-align: right;
-    color: white !important;
-    text-decoration: none;
-}
-#login-button:hover{
-    text-decoration: none;
 }

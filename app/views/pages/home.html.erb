@@ -3,17 +3,13 @@
     <div class="banner">
         <div class="container-fluid mx-auto banner-text" style="width:fit-content;">
 
-            <div id="login-button">
-                <a href="#">Login</a>
-            </div>
-
             <h1><span id="app-name">Sportify</span></h1>
             <h3>Meet your buddy and go!</h3>
 
             <div class="search-bar" style="display:block">
-                <%= simple_form_for :search, url: root_path, method: "GET", html: { class: 'form-block' } do |f| %>
-                <%= f.input :location, input_html: {value: "Type your location", }, label:false %>
-                <%= f.submit "Explore", class: "btn btn-primary btn-sm btn-block font-weight-bold" %>
+                <%= simple_form_for :search, url: events_path, method: "GET", html: { class: 'form-block' } do |f| %>
+                <%= f.input :location, input_html: {placeholder: "Type your address" }, label:false %>    
+                <%= f.submit "Explore", class: "btn btn-primary btn-sm btn-block font-weight-bold"  %>
                 <% end %>
             </div>
         </div>
