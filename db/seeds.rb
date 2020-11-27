@@ -18,7 +18,7 @@ mark = User.new(
  description: "hello. I like Tennis."
 )
 
-mark.photo.attach(io: File.open("#{Rails.root}/db/images/marcus.jpeg"), filename: "marcus.jpeg")
+mark.photo.attach(io: File.open("#{Rails.root}/db/images/marcus.jpg"), filename: "marcus.jpg")
 mark.save!
 
 andrea = User.new(
@@ -29,7 +29,7 @@ andrea = User.new(
  description: "Advanced tennis player. Wants to practice regularly."
 )
 
-andrea.photo.attach(io: File.open("#{Rails.root}/db/images/andrea.jpeg"), filename: "andrea.jpeg")
+andrea.photo.attach(io: File.open("#{Rails.root}/db/images/andrea.jpg"), filename: "andrea.jpg")
 andrea.save!
 
 event1 = Event.create(
