@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  
+
 before_action :set_event, only: [:edit, :update, :show, :update]
 
   def index
@@ -41,18 +41,18 @@ before_action :set_event, only: [:edit, :update, :show, :update]
     end
     authorize @event
   end
-    
+
   def edit
   end
 
   def update
     if @event.update(event_params)
-      redirect_to events_path(@event)
+      redirect_to event_path(@event)
     else
       render :edit
     end
   end
-  
+
   def destroy
     @event.destroy
     redirect_to events_path

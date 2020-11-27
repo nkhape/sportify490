@@ -14,7 +14,7 @@
 
   <div class="d-flex justify-content-between">
     <div>
-      <div><%= cl_image_tag @event.user.photo.key, class: "img-card-avatar" %>
+      <div><%#= cl_image_tag @event.user.photo.key, class: "img-card-avatar" %>
       </div>
       <p><%= @event.user.username %></p>
     </div>
@@ -47,7 +47,7 @@
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
   <%= simple_form_for [@event, @booking] do |f| %>
-      <%= f.button :submit, :bookings, class: "btn btn-primary btn-lg btn-block sticky" %>
+      <%= f.button :submit, 'Join', class: "btn btn-primary btn-lg btn-block sticky" %>
     <% end %>
 
   <% if policy(@event).update? %>
