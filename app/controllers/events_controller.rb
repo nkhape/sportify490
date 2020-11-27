@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  
+
 before_action :set_event, only: [:edit, :update, :show, :update]
 
   def index
@@ -13,16 +13,11 @@ before_action :set_event, only: [:edit, :update, :show, :update]
   end
 
   def show
-    @events = policy_scope(Event)
-    @markers = [
-      {
+    @marker = {
         lat: @event.latitude,
         lng: @event.longitude
       }
-    ]
-  end
 
-  def show
     @booking = Booking.new
   end
 
@@ -41,28 +36,24 @@ before_action :set_event, only: [:edit, :update, :show, :update]
     end
     authorize @event
   end
-    
+
   def edit
   end
 
   def update
     if @event.update(event_params)
-      redirect_to events_path(@event)
+      redirect_to event_path(@event)
     else
       render :edit
     end
   end
-  
+
   def destroy
     @event.destroy
     redirect_to events_path
   end
 
   private
-
-  def set_event
-    @event = Event.find(params[:id])
-  end
 
   def event_params
     params.require(:event).permit(:name, :description, :location, :date, :price, :capacity, :level, :sport)
