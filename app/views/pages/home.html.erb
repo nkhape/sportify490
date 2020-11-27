@@ -1,5 +1,5 @@
 <%# <div class="opaque-cover"></div> %>
-<div class="body-styling">
+<div class="body-styling" style="background-image: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url(<%= asset_path 'background-image.jpg' %>)">
     <div class="banner">
         <div class="container-fluid mx-auto banner-text" style="width:fit-content;">
 
@@ -12,7 +12,7 @@
 
             <div class="search-bar" style="display:block">
                 <%= simple_form_for :search, url: root_path, method: "GET", html: { class: 'form-block' } do |f| %>
-                <%= f.input :location, input_html: {value: "Type your location", }, label:false %>    
+                <%= f.input :location, input_html: {value: "Type your location", }, label:false %>
                 <%= f.submit "Explore", class: "btn btn-primary btn-sm btn-block font-weight-bold" %>
                 <% end %>
             </div>
@@ -37,7 +37,7 @@
                 <p>Make friends & have fun</p>
                 <%= image_tag("fun.png") %>
                 <hr / class="hr-styling">
-            </div>      
+            </div>
         </div>
     </div>
 </div>
