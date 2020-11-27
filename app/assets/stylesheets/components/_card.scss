@@ -85,3 +85,11 @@
   opacity: 0; /* Fix to make div clickable in IE */
   filter: alpha(opacity=1); /* Fix to make div clickable in IE */
 }
+
+.card-profile {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}

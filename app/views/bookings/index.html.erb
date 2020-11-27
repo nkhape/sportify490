@@ -14,7 +14,7 @@
                 </div>
                 <div class="card-avatar">
                 <%# Dynamically change the avatar depending on the user once cloudinary is installed %>
-                  <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "img-card-avatar" %>
+                  <%= cl_image_tag booking.event.user.photo.key, class: "img-card-avatar" %>
                 </div>
               </div>
               <div class="card-details">
@@ -31,7 +31,7 @@
                       <p class="text-danger font-weight-bold"><%= booking.event.level %></p>
                     <% end %>
                     <%# Dynamically change the amount of bookings made for that event + add if statement to change color of text %>
-                    <p>x / <%= booking.event.capacity %> </p>
+                    <!-- <p> X / <%= booking.event.capacity %> </p> -->
                   </div>
               </div>
             </div>
