@@ -8,7 +8,7 @@
 
             <div class="search-bar" style="display:block">
                 <%= simple_form_for :search, url: events_path, method: "GET", html: { class: 'form-block' } do |f| %>
-                <%= f.input :location, input_html: {placeholder: "Type your address" }, label:false %>    
+                <%= f.input :location, input_html: {placeholder: "Type your sport" }, label:false %>    
                 <%= f.submit "Explore", class: "btn btn-primary btn-sm btn-block font-weight-bold"  %>
                 <% end %>
             </div>
