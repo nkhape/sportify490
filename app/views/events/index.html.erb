@@ -1,9 +1,10 @@
 <%# Build search bar HERE %>
-<div style="height: 100px; background: #30475E"></div>
 
+<%#  %>
 <div class="container">
+<h2 class="text-center mt-2">Explore events<br> around you</h1>
   <a class="btn btn-outline-primary btn-lg my-2" data-toggle="collapse" href="#collapseMap" role="button" aria-expanded="false" aria-controls="collapseMap">
-        Show map view <i class="fas fa-map-marked-alt"></i>
+        Map <i class="fas fa-map-marked-alt"></i>
   </a>
   <div class="collapse" id="collapseMap">
   <%# Build map HERE %>
@@ -18,6 +19,9 @@
 <div class="category-banner" style="background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1) ), url(<%= asset_path 'tennis-court.jpg' %>)">
   <h2 class="m-0">Tennis</h2>
 </div>
+
+<%# Create component container cards %>
+<%# Create logic with if statements of each category to display the header/banner %>
 
 <div class="container">
   <div class="cards-events row">
@@ -50,7 +54,11 @@
                       <p class="text-danger font-weight-bold"><%= event.level %></p>
                     <% end %>
                     <%# Dynamically change the amount of bookings made for that event + add if statement to change color of text %>
-                    <p>x / <%= event.capacity %> </p>
+                    <% if event.bookings.count == event.capacity %>
+                      <p style="color: #E8E8E8"><%= event.bookings.count %> / <%= event.capacity %> </p>
+                    <% else %>
+                      <p><%= event.bookings.count %> / <%= event.capacity %> </p>
+                    <% end %>
                   </div>
               </div>
             </div>

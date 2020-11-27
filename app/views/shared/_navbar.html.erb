@@ -33,7 +33,7 @@
     <% end %>
     <% end %>
 
-    <%= link_to destroy_user_session_path, method: :delete, class: "navbar-btn" do %>
+    <%= link_to bookings_path, class: "navbar-btn" do %>
     <% if action_name == "sign_in" %>
       <%= image_tag "login-active.svg", alt: "Profile" %>
       <div class="nav-text"><p class="nav-text-active">Profile</p></div>
