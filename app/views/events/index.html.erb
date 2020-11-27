@@ -20,6 +20,9 @@
   <h2 class="m-0">Tennis</h2>
 </div>
 
+<%# Create component container cards %>
+<%# Create logic with if statements of each category to display the header/banner %>
+
 <div class="container">
   <div class="cards-events row">
     <% @events.each do |event| %>
@@ -51,11 +54,10 @@
                       <p class="text-danger font-weight-bold"><%= event.level %></p>
                     <% end %>
                     <%# Dynamically change the amount of bookings made for that event + add if statement to change color of text %>
-                    <% randBookings = rand(1..2) %>
-                    <% if randBookings == event.capacity %>
-                      <p style="color: #E8E8E8"><%= randBookings %> / <%= event.capacity %> </p>
+                    <% if event.bookings.count == event.capacity %>
+                      <p style="color: #E8E8E8"><%= event.bookings.count %> / <%= event.capacity %> </p>
                     <% else %>
-                      <p><%= randBookings %> / <%= event.capacity %> </p>
+                      <p><%= event.bookings.count %> / <%= event.capacity %> </p>
                     <% end %>
                   </div>
               </div>
