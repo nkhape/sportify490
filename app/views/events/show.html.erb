@@ -14,7 +14,7 @@
 
   <div class="d-flex justify-content-between">
     <div>
-      <div><%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "img-card-avatar" %>
+      <div><%= cl_image_tag @event.user.photo.key, class: "img-card-avatar" %>
       </div>
       <p><%= @event.user.username %></p>
     </div>
