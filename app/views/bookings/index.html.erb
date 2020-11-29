@@ -31,11 +31,55 @@
                       <p class="text-danger font-weight-bold"><%= booking.event.level %></p>
                     <% end %>
                     <%# Dynamically change the amount of bookings made for that event + add if statement to change color of text %>
-                    <!-- <p> X / <%= booking.event.capacity %> </p> -->
+                      <p> <%= booking.status %> </p>
                   </div>
               </div>
             </div>
           </div>
         </div>
       <% end %>
+  </div>
+
+  <div class="text-center">
+  <h2>Events created</h2>
+</div>
+
+<div class="cards-events row">
+    <% @events.each do |event| %>
+      <% if event.user == current_user %>
+        <div class="col-12 col-lg-3">
+          <div class="card-event">
+            <div class="card-event-description">
+              <div class="card-title">
+                <div>
+                  <h3><%= event.name.truncate(22) %></h3>
+                  <p><i class="fas fa-running"></i> <span class="card-category"><%= event.sport %></span></p>
+                </div>
+                <div class="card-avatar">
+                <%# Dynamically change the avatar depending on the user once cloudinary is installed %>
+                  <%= cl_image_tag event.user.photo.key, class: "img-card-avatar" %>
+                </div>
+              </div>
+              <div class="card-details">
+                  <div>
+                    <p><i class="far fa-calendar-alt"></i> <%= event.date.strftime("%d/%m/%Y") %></p>
+                    <p><i class="fas fa-map-pin"></i> <%= event.location.truncate(22) %></p>
+                  </div>
+                  <div class="card-price">
+                    <% if event.level == "Beginner" %>
+                      <p class="text-success font-weight-bold"><%= event.level %></p>
+                    <% elsif event.level == "Intermediate" %>
+                      <p class="text-warning font-weight-bold"><%= event.level %></p>
+                    <% else %>
+                      <p class="text-danger font-weight-bold"><%= event.level %></p>
+                    <% end %>
+                    <%# Dynamically change the amount of bookings made for that event + add if statement to change color of text %>
+                   <p> <%# @booking.status %> </p>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
   </div>

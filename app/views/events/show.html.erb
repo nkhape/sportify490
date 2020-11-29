@@ -45,9 +45,12 @@
      data-marker="<%= @marker.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
-  <%= simple_form_for [@event, @booking] do |f| %>
-      <%= f.button :submit, 'Join', class: "btn btn-primary btn-lg btn-block sticky" %>
+  <% if @event.user != current_user %>
+    <%= simple_form_for [@event, @booking] do |f| %>
+        <%= f.button :submit, 'Join', class: "btn btn-primary btn-lg btn-block sticky" %>
     <% end %>
+  <% end %>
+
 
   <% if policy(@event).update? %>
     <%= link_to 'Edit this event', edit_event_path(@event), class: "btn btn-outline-primary btn-lg my-2" %>
