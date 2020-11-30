@@ -53,10 +53,10 @@
    data-marker="<%= @marker.to_json %>"
    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
-<div class="d-flex justify-content-center ">
+<div class="d-flex justify-content-center align-content-center">
   <% if @event.user != current_user %>
     <%= simple_form_for [@event, @booking] do |f| %>
-        <%= f.button :submit, 'Join!', class: "btn btn-primary text-white" %>
+        <%= f.button :submit, 'Join!', class: "btn btn-primary text-white btn-md" %>
     <% end %>
   <% end %>
 
