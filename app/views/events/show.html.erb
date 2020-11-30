@@ -1,6 +1,5 @@
 
 <div class="container">
-
   <div class="show-card">
     <div>
       <div class="event-name-show">
@@ -19,7 +18,7 @@
   </div>
 
   <div class="d-flex justify-content-between show-card">
-    <div>
+    <div class="justify-content-center">
       <%= cl_image_tag @event.user.photo.key, class: "img-card-avatar" %>
       <p><%= @event.user.username %></p>
     </div>
@@ -27,42 +26,41 @@
       <p id="background-description"><%= @event.description %></p>
     </div>
   </div>
-
   <div>
     <p><i class="far fa-calendar-alt"></i> <%= @event.date.strftime("%d/%m/%Y") %></p>
   </div>
-
   <div>
     <p><i class="far fa-clock"></i> <%= @event.date.strftime("%l:%M%p") %></p>
   </div>
-
   <div class="d-flex">
     <p><i class="fas fa-money-bill-wave"></i> <%= @event.price %>€</p>
   </div>
-
   <div class="d-flex">
     <p><i class="fas fa-location-arrow"></i> <%= @event.location %></p>
   </div>
+</div>
 
- <div id="showmap"
-     style="width: 100%; height: 200px;"
-     data-marker="<%= @marker.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+<div id="showmap"
+   style="width: 100%; height: 200px;"
+   data-marker="<%= @marker.to_json %>"
+   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
+<div class="container">
   <% if @event.user != current_user %>
     <%= simple_form_for [@event, @booking] do |f| %>
-        <%= f.button :submit, 'Join!', class: "btn btn-primary btn-lg btn-block sticky" %>
+        <%= f.button :submit, 'Join!', class: "btn btn-primary btn-lg" %>
     <% end %>
   <% end %>
-
 
   <% if policy(@event).update? %>
     <%= link_to 'Edit this event', edit_event_path(@event), class: "btn btn-outline-primary btn-lg my-2" %>
   <% end %>
+
   <% if policy(@event).destroy? %>
     <%= link_to 'Delete this event', @event, method: :delete, data: { confirm: 'Are you sure you want to delete this event?' }, class: "btn btn-outline-danger btn-lg my-2" %>
   <% end %>
+</div>
  <!--  <div>
     <p>....comments....</p>
   </div> -->
-</div>
+
