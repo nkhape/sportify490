@@ -1,16 +1,24 @@
 // Events Show Page
 
 .show-card {
+    font-weight: 300;
     color: black;
     border-bottom: 0.5px solid $light-gray;
-    margin: 20px 10px;
+    margin: 20px 0px;
+    padding: 0px 25px;
+}
+
+.show-card-desc {
+    font-weight: 300;
+    color: black;
+    border-bottom: 0.5px solid $light-gray;
+    margin: 20px 10px 0px 10px;
 }
 
 .sticky {
   position: sticky;
   bottom: 0;
 }
-
 
 #background-description {
   background-color: $light-blue;
