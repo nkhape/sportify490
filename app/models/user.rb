@@ -4,9 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :events
   has_many :bookings
   has_many :posts
   has_many :reviews
-  has_many :events, through: :bookings
+  has_many :joint_events, through: :bookings, source: :event
   has_one_attached :photo
 end
