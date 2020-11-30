@@ -1,29 +1,31 @@
 <%# Build search bar HERE %>
-
-<%#  %>
 <div class="container">
-<h2 class="text-center mt-2">Explore events<br> around you</h1>
-  <a class="btn btn-outline-primary btn-lg my-2" data-toggle="collapse" href="#collapseMap" role="button" aria-expanded="false" aria-controls="collapseMap">
-        Map <i class="fas fa-map-marked-alt"></i>
-  </a>
-  <div class="collapse" id="collapseMap">
-  <%# Build map HERE %>
-  <div id="map"
-     style="width: 100%; height: 350px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-  <%#  %>
-  </div>
-</div>
 
-<div class="category-banner" style="background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1) ), url(<%= asset_path 'tennis-court.jpg' %>)">
-  <h2 class="m-0">Tennis</h2>
-</div>
+  <div class="search-section">
+    <div class="search-box">
+      <p class="search-text"><i class="fas fa-search search-icon"></i> Type your favorite sport...</p>
+    </div>
+    <div class="filter-element"><i class="fas fa-sliders-h filter-icon"></i></div>
+  </div>
+  <%#  %>
+
+    <!-- <%# MAP CODE %>
+    <a class="btn btn-outline-primary btn-lg my-2" data-toggle="collapse" href="#collapseMap" role="button" aria-expanded="false" aria-controls="collapseMap">
+          Map <i class="fas fa-map-marked-alt"></i>
+    </a>
+    <div class="collapse" id="collapseMap">
+
+    <div id="map"
+      style="width: 100%; height: 350px;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+    <%#  %>
+    </div>
+    -->
 
 <%# Create component container cards %>
 <%# Create logic with if statements of each category to display the header/banner %>
 
-<div class="container">
   <div class="cards-events row">
     <% @events.each do |event| %>
      <% if event.bookings.count + 1 < event.capacity %>

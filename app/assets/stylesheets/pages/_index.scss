@@ -2,14 +2,28 @@
 @import "home";
 @import "show";
 
-.category-banner {
-  background-size: cover;
-  height: 10vh;
+.search-section {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
-.category-banner h2 {
-  color: white;
+.search-box {
+  border: 1px solid #82b2de;
+  border-radius: 4px;
+  padding: 12px 55px 12px 15px;
+}
+
+.search-text {
+  color: $gray;
+  margin: 0;
+}
+
+.search-icon {
+  color: $blue;
+}
+
+.filter-icon {
+  font-size: 40px;
+  color: $blue;
 }
