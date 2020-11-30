@@ -3,6 +3,7 @@ class BookingsController < ApplicationController
     @bookings = Booking.all
     @user = current_user
     @bookings = policy_scope(Booking)
+    @events = Event.all
   end
 
   # def new
@@ -16,7 +17,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @event = Event.find(params[:event_id])
     @booking.event = @event
-    @booking.status = :request_sent
+    @booking.status = 1
     if @booking.save
       redirect_to bookings_path
     else

@@ -26,6 +26,7 @@
 <div class="container">
   <div class="cards-events row">
     <% @events.each do |event| %>
+     <% if event.bookings.count + 1 < event.capacity %>
         <div class="col-12 col-lg-3">
           <div class="card-event">
           <%= link_to "See item", event_path(event) %>
@@ -55,9 +56,9 @@
                     <% end %>
                     <%# Dynamically change the amount of bookings made for that event + add if statement to change color of text %>
                     <% if event.bookings.count == event.capacity %>
-                      <p style="color: #E8E8E8"><%= event.bookings.count %> / <%= event.capacity %> </p>
+                      <p style="color: #E8E8E8"><%= event.bookings.count + 1%> / <%= event.capacity %> </p>
                     <% else %>
-                      <p><%= event.bookings.count %> / <%= event.capacity %> </p>
+                      <p><%= event.bookings.count + 1%> / <%= event.capacity %> </p>
                     <% end %>
                   </div>
               </div>
@@ -65,5 +66,6 @@
           </div>
         </div>
       <% end %>
+    <% end %>
   </div>
 </div>
