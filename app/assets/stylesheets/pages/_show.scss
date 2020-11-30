@@ -1,17 +1,9 @@
 // Events Show Page
 
 .show-card {
-    background-size: cover;
-    background-position: center;
-    height: 150px;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    color: white;
-    text-shadow: 0 0 10px rgba(0,0,0,0.7);
-    padding: 10px;
-    margin-bottom: 10px;
-    position: relative;
+    color: black;
+    border-bottom: 0.5px solid $light-gray;
+    margin: 20px 10px;
 }
 
 .sticky {
@@ -21,13 +13,36 @@
 
 
 #background-description {
-  background-color: #30475e26;
+  background-color: $light-blue;
   padding: 10px;
+  margin-left: 20px;
 }
 
+.event-name-show {
+  margin: 20px 0px;
+}
 
-#sport-tag {
-  position: absolute;
-  right: 10px;
-  bottom: 0;
+.event-info-show {
+  margin: 20px 0px;
+}
+
+.far, .fas {
+  color: $blue;
+}
+
+#showmap {
+  margin-bottom: 20px;
+}
+
+.text-white {
+  color: white;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.btn-md {
+  width: 143px;
+  height: 43px;
 }
