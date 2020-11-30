@@ -1,31 +1,35 @@
-<div class="show-card" style="background-image: url(<%= asset_path 'tennis-court.jpg' %>); ">
-  <div class="d-flex">
-    <div>
-      <h2><%= @event.name.truncate(22) %></h2>
-      <h3><%= @event.level %></h3>
-    </div>
-  <div id="sport-tag">
-    <p><i class="fas fa-running"></i> <span class="card-category"><%= @event.sport %></span></p>
-  </div>
-  </div>
-</div>
+
 <div class="container">
 
+  <div class="show-card">
+    <div>
+      <div class="event-name-show">
+        <h2><%= @event.name.truncate(22) %></h2>
+      </div>
+      <div class="d-flex justify-content-between event-info-show">
+        <div class="d-flex justify-content-between">
+          <p><span class="card-category"><%= @event.sport %></span></p>
+          <p><%= @event.level %></p>
+        </div>
+        <div>
+          <p> <%= @event.bookings.count %> / <%= @event.capacity %></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <div class="d-flex justify-content-between">
+  <div class="d-flex justify-content-between show-card">
     <div>
       <%= cl_image_tag @event.user.photo.key, class: "img-card-avatar" %>
       <p><%= @event.user.username %></p>
     </div>
-
     <div>
-      <p><i class="far fa-calendar-alt"></i> <%= @event.date.strftime("%d/%m/%Y") %></p>
+      <p id="background-description"><%= @event.description %></p>
     </div>
   </div>
 
   <div>
-    <h2>Description</h2>
-    <p id="background-description"><%= @event.description %></p>
+    <p><i class="far fa-calendar-alt"></i> <%= @event.date.strftime("%d/%m/%Y") %></p>
   </div>
 
   <div class="d-flex">
