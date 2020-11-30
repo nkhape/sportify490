@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   end
 
   resources :bookings, only: :index
+  resources :search, only: [:index]
 
 end
