@@ -33,15 +33,25 @@
           <div class="card-event">
           <%= link_to "See item", event_path(event) %>
             <div class="card-event-description">
+              <div class="card-level">
+                <% if event.level == "Beginner" %>
+                  <p class="text-success font-weight-bold mb-1"><%= event.level %></p>
+                <% elsif event.level == "Intermediate" %>
+                  <p class="text-warning font-weight-bold mb-1"><%= event.level %></p>
+                <% else %>
+                  <p class="text-danger font-weight-bold mb-1"><%= event.level %></p>
+                <% end %>
+              </div>
               <div class="card-title">
-                <div>
-                  <h3><%= event.name.truncate(22) %></h3>
-                  <p><i class="fas fa-running"></i> <span class="card-category"><%= event.sport %></span></p>
-                </div>
                 <div class="card-avatar">
                 <%# Dynamically change the avatar depending on the user once cloudinary is installed %>
                   <%= cl_image_tag event.user.photo.key, class: "img-card-avatar" %>
                 </div>
+                <div class="card-content">
+                  <h3><%= event.name.truncate(26) %></h3>
+                  <p><i class="fas fa-running"></i> <span class="card-category"><%= event.sport %></span></p>
+                </div>
+                
               </div>
               <div class="card-details">
                   <div>
@@ -49,18 +59,11 @@
                     <p><i class="fas fa-map-pin"></i> <%= event.location.truncate(22) %></p>
                   </div>
                   <div class="card-price">
-                    <% if event.level == "Beginner" %>
-                      <p class="text-success font-weight-bold"><%= event.level %></p>
-                    <% elsif event.level == "Intermediate" %>
-                      <p class="text-warning font-weight-bold"><%= event.level %></p>
-                    <% else %>
-                      <p class="text-danger font-weight-bold"><%= event.level %></p>
-                    <% end %>
                     <%# Dynamically change the amount of bookings made for that event + add if statement to change color of text %>
                     <% if event.bookings.count == event.capacity %>
-                      <p style="color: #E8E8E8"><%= event.bookings.count + 1%> / <%= event.capacity %> </p>
+                      <p style="color: #E8E8E8"><%= event.bookings.count + 1 %> / <%= event.capacity %> </p>
                     <% else %>
-                      <p><%= event.bookings.count + 1%> / <%= event.capacity %> </p>
+                      <p><%= event.bookings.count + 1 %> / <%= event.capacity %> </p>
                     <% end %>
                   </div>
               </div>

@@ -7,12 +7,16 @@
 .card-event {
   max-width: 345px;
   background-color: white;
-  border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
   text-align: center;
   padding: 0;
   position: relative;
   margin: 0 auto;
+}
+
+.card-level {
+  text-align: right;
+  font-size: 14px;
 }
 
 .card-title {
@@ -23,7 +27,7 @@
 }
 
 .card-title h3 {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: bold;
 }
 
@@ -39,15 +43,15 @@
   color: white;
 }
 
-.card-avatar {
+.card-content {
   position: absolute;
   right: 0;
-  top: 20px;
+/*   top: 20px; */
 }
 
 .img-card-avatar {
   border-radius: 100%;
-  width: 40px;
+  width: 78px;
 }
 
 .card-event-description {
