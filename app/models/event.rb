@@ -3,8 +3,18 @@ class Event < ApplicationRecord
   has_many :users, through: :bookings
   has_many :bookings
 
-  include PgSearch
-  pg_search_scope :search, against: [:location, :sport]
+  include PgSearch::Model
+  pg_search_scope :global_search,
+   against: [:location, :sport, :date, :price, :capacity, :level],
+   using: {
+    tsearch: { prefix: true }
+  }
+
+  pg_search_scope :location_search,
+  against: [:location],
+  using: {
+    tsearch: { prefix: true }
+  }
 
   enum level: { Beginner: 1, Intermediate: 2, Advanced: 3, Pro: 4 }
 

@@ -37,7 +37,9 @@
                 </div>
                 <div class="card-avatar">
                 <%# Dynamically change the avatar depending on the user once cloudinary is installed %>
+                <% if event.user.photo.attached? %>
                   <%= cl_image_tag event.user.photo.key, class: "img-card-avatar" %>
+                <% end %>
                 </div>
               </div>
               <div class="card-details">
