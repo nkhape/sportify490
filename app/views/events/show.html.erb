@@ -33,16 +33,16 @@
   </div>
   <div class="show-card-desc">
     <div>
-      <p><i class="far fa-calendar-alt"></i> <%= @event.date.strftime("%d/%m/%Y") %></p>
+      <p><i class="icon far fa-calendar-alt"></i> <%= @event.date.strftime("%d/%m/%Y") %></p>
     </div>
     <div>
-      <p><i class="far fa-clock"></i> <%= @event.date.strftime("%l:%M%p") %></p>
+      <p><i class="icon far fa-clock"></i> <%= @event.date.strftime("%l:%M%p") %></p>
     </div>
     <div>
-      <p><i class="fas fa-money-bill-wave"></i> <%= @event.price %>€</p>
+      <p><i class="icon fas fa-money-bill-wave"></i> <%= @event.price %>€</p>
     </div>
     <div>
-      <p><i class="fas fa-location-arrow"></i> <%= @event.location %></p>
+      <p><i class="icon fas fa-location-arrow"></i> <%= @event.location %></p>
     </div>
   </div>
 </div>
@@ -60,11 +60,11 @@
   <% end %>
 
   <% if policy(@event).update? %>
-    <%= link_to 'Edit this event', edit_event_path(@event), class: "btn btn-outline-primary btn-lg my-2" %>
+    <%= link_to 'Edit this event', edit_event_path(@event), class: "btn btn-outline-primary btn-md my-2" %>
   <% end %>
 
   <% if policy(@event).destroy? %>
-    <%= link_to 'Delete this event', @event, method: :delete, data: { confirm: 'Are you sure you want to delete this event?' }, class: "btn btn-outline-danger btn-lg my-2" %>
+    <%= link_to 'Delete this event', @event, method: :delete, data: { confirm: 'Are you sure you want to delete this event?' }, class: "btn btn-outline-danger btn-md my-2" %>
   <% end %>
 </div>
  <!--  <div>
