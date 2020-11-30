@@ -8,7 +8,13 @@
       <div class="d-flex justify-content-between event-info-show">
         <div class="d-flex justify-content-between">
           <p><span class="card-category"><%= @event.sport %></span></p>
-          <p class="ml-2"><%= @event.level %></p>
+          <% if @event.level == "Beginner" %>
+                      <p class="text-success ml-2"><%= @event.level %></p>
+                    <% elsif @event.level == "Intermediate" %>
+                      <p class="text-warning ml-2"><%= @event.level %></p>
+                    <% else %>
+                      <p class="text-danger ml-2"><%= @event.level %></p>
+                    <% end %></p>
         </div>
         <div>
           <p> <%= @event.bookings.count %> / <%= @event.capacity %></p>
@@ -43,14 +49,14 @@
 </div>
 
 <div id="showmap"
-   style="width: 100%; height: 200px;"
+   style="width: 100%; height: 150px;"
    data-marker="<%= @marker.to_json %>"
    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
-<div class="container ">
+<div class="d-flex justify-content-center ">
   <% if @event.user != current_user %>
     <%= simple_form_for [@event, @booking] do |f| %>
-        <%= f.button :submit, 'Join!', class: "btn btn-primary text-white btn-lg" %>
+        <%= f.button :submit, 'Join!', class: "btn btn-primary text-white" %>
     <% end %>
   <% end %>
 
