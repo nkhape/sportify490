@@ -8,7 +8,7 @@
       <div class="d-flex justify-content-between event-info-show">
         <div class="d-flex justify-content-between">
           <p><span class="card-category"><%= @event.sport %></span></p>
-          <p><%= @event.level %></p>
+          <p class="ml-2"><%= @event.level %></p>
         </div>
         <div>
           <p> <%= @event.bookings.count %> / <%= @event.capacity %></p>
@@ -18,9 +18,9 @@
   </div>
 
   <div class="d-flex justify-content-between show-card">
-    <div class="justify-content-center">
+    <div>
       <%= cl_image_tag @event.user.photo.key, class: "img-card-avatar" %>
-      <p><%= @event.user.username %></p>
+      <p class="center-text"><%= @event.user.username %></p>
     </div>
     <div>
       <p id="background-description"><%= @event.description %></p>
@@ -48,7 +48,7 @@
 <div class="container">
   <% if @event.user != current_user %>
     <%= simple_form_for [@event, @booking] do |f| %>
-        <%= f.button :submit, 'Join!', class: "btn btn-primary btn-lg" %>
+        <%= f.button :submit, 'Join!', class: "btn btn-primary text-white" %>
     <% end %>
   <% end %>
 

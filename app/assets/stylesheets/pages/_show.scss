@@ -3,7 +3,7 @@
 .show-card {
     color: black;
     position: relative;
-    border-bottom: 0.5px solid white;
+    border-bottom: 0.5px solid $light-gray;
     margin: 20px 0px;
 }
 
@@ -16,6 +16,7 @@
 #background-description {
   background-color: $light-blue;
   padding: 10px;
+  margin-left: 10px;
 }
 
 .event-name-show {
@@ -34,3 +35,10 @@
   margin-bottom: 20px;
 }
 
+.text-white {
+  color: white;
+}
+
+.center-text {
+  text-align: center;
+}
