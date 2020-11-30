@@ -1,63 +1,71 @@
 <%# Build search bar HERE %>
-
-<%#  %>
 <div class="container">
-<h2 class="text-center mt-2">Explore events<br> around you</h1>
-  <a class="btn btn-outline-primary btn-lg my-2" data-toggle="collapse" href="#collapseMap" role="button" aria-expanded="false" aria-controls="collapseMap">
-        Map <i class="fas fa-map-marked-alt"></i>
-  </a>
-  <div class="collapse" id="collapseMap">
-  <%# Build map HERE %>
-  <div id="map"
-     style="width: 100%; height: 350px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-  <%#  %>
-  </div>
-</div>
 
-<div class="category-banner" style="background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1) ), url(<%= asset_path 'tennis-court.jpg' %>)">
-  <h2 class="m-0">Tennis</h2>
-</div>
+  <div class="search-section">
+    <div class="search-box">
+      <p class="search-text"><i class="fas fa-search search-icon"></i> Type your favorite sport...</p>
+    </div>
+    <div class="filter-element"><i class="fas fa-sliders-h filter-icon"></i></div>
+  </div>
+  <%#  %>
+
+    <!-- <%# MAP CODE %>
+    <a class="btn btn-outline-primary btn-lg my-2" data-toggle="collapse" href="#collapseMap" role="button" aria-expanded="false" aria-controls="collapseMap">
+          Map <i class="fas fa-map-marked-alt"></i>
+    </a>
+    <div class="collapse" id="collapseMap">
+
+    <div id="map"
+      style="width: 100%; height: 350px;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+    <%#  %>
+    </div>
+    -->
 
 <%# Create component container cards %>
 <%# Create logic with if statements of each category to display the header/banner %>
 
-<div class="container">
   <div class="cards-events row">
     <% @events.each do |event| %>
+     <% if event.bookings.count + 1 < event.capacity %>
         <div class="col-12 col-lg-3">
           <div class="card-event">
           <%= link_to "See item", event_path(event) %>
             <div class="card-event-description">
+              <div class="card-level">
+                <% if event.level == "Beginner" %>
+                  <p class="text-success font-weight-bold mb-1"><%= event.level %></p>
+                <% elsif event.level == "Intermediate" %>
+                  <p class="text-warning font-weight-bold mb-1"><%= event.level %></p>
+                <% else %>
+                  <p class="text-danger font-weight-bold mb-1"><%= event.level %></p>
+                <% end %>
+              </div>
               <div class="card-title">
-                <div>
-                  <h3><%= event.name.truncate(22) %></h3>
-                  <p><i class="fas fa-running"></i> <span class="card-category"><%= event.sport %></span></p>
-                </div>
                 <div class="card-avatar">
                 <%# Dynamically change the avatar depending on the user once cloudinary is installed %>
+                <% if event.user.photo.attached? %>
                   <%= cl_image_tag event.user.photo.key, class: "img-card-avatar" %>
+                <% end %>
                 </div>
+                <div class="card-content">
+                  <h3><%= event.name.truncate(26) %></h3>
+                  <p><i class="far fa-calendar-alt icon mr-1"></i> <%= event.date.strftime("%d/%m/%Y") %> <span class="ml-2"><i class="far fa-clock icon mr-1"></i> <%= event.date.strftime("%H:%M") %></span></p>
+                  <p><i class="fas fa-location-arrow icon mr-1"></i> <%= event.location.truncate(29) %></p>
+                </div>
+                
               </div>
               <div class="card-details">
-                  <div>
-                    <p><i class="far fa-calendar-alt"></i> <%= event.date.strftime("%d/%m/%Y") %></p>
-                    <p><i class="fas fa-map-pin"></i> <%= event.location.truncate(22) %></p>
-                  </div>
+                <div>
+                  <p><span class="card-category"><%= event.sport %></span></p>
+                </div>
                   <div class="card-price">
-                    <% if event.level == "Beginner" %>
-                      <p class="text-success font-weight-bold"><%= event.level %></p>
-                    <% elsif event.level == "Intermediate" %>
-                      <p class="text-warning font-weight-bold"><%= event.level %></p>
-                    <% else %>
-                      <p class="text-danger font-weight-bold"><%= event.level %></p>
-                    <% end %>
                     <%# Dynamically change the amount of bookings made for that event + add if statement to change color of text %>
                     <% if event.bookings.count == event.capacity %>
-                      <p style="color: #E8E8E8"><%= event.bookings.count %> / <%= event.capacity %> </p>
+                      <p style="color: #E8E8E8"><%= event.bookings.count + 1 %> / <%= event.capacity %> </p>
                     <% else %>
-                      <p><%= event.bookings.count %> / <%= event.capacity %> </p>
+                      <p><%= event.bookings.count + 1 %> / <%= event.capacity %> </p>
                     <% end %>
                   </div>
               </div>
@@ -65,5 +73,6 @@
           </div>
         </div>
       <% end %>
+    <% end %>
   </div>
 </div>

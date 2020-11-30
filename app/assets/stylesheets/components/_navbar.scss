@@ -7,6 +7,17 @@
   z-index: 9999;
 }
 
+.nav-img {
+  margin: 0 !important;
+  font-size: 22px;
+}
+
+.nav-img-active {
+  margin: 0 !important;
+  font-size: 22px;
+  color: $blue;
+}
+
 .nav-text p {
   font-size: 10px;
   margin: 0 !important;
@@ -14,7 +25,7 @@
 }
 
 .nav-text-active {
-  color: #30475E;
+  color: $blue;
   font-weight: bold;
 }
 
@@ -28,11 +39,9 @@
   vertical-align: top;
   display: inline-block;
   text-align: center;
-}
-.navbar-btn:active {
-  text-decoration: none;
+  color: $gray;
 }
 
-.navbar-lewagon .navbar-btn img {
-  width: 25px;
+.navbar-btn:active, .navbar-btn:hover {
+  text-decoration: none;
 }

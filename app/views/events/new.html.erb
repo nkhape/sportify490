@@ -1,17 +1,17 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
-      <h2 class="text-center">Create an event</h2>
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4 form">
+      <h2 class="text-center">Create your event</h2>
         <%= simple_form_for @event do |f| %>
-          <%= f.input :name %>
+          <%= f.input :name, placeholder: 'Name of your event' %>
           <%= f.input :sport, collection: ["Football", "Basketball", "Tennis", "Baseball", "American football", "Baseball", "Combat sports", "Golf", "Volleyball", "Other"] %>
-          <%= f.input :description %>
-          <%= f.input :price %>
+          <%= f.input :description, placeholder: 'Introduce yourself and describe the event' %>
+          <%= f.input :price, placeholder: 'e.g 5' %>
           <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
-          <%= f.input :capacity %>
-          <%= f.input :level, collection: Event.levels.map{ |l| [l.first, l.first.humanize] }, label_method: :second, value_method: :first, as: :radio_buttons, wrapper: :vertical_collection_inline %>
-          <%= f.input :location %>
-          <%= f.button :submit, class: "btn btn-primary btn-lg" %>
+          <%= f.input :capacity, placeholder: '2' %>
+          <%= f.input :level, collection: Event.levels.map{ |l| [l.first, l.first.humanize] }, label_method: :second, value_method: :first%>
+          <%= f.input :location, placeholder: 'Enter a location for your event' %>
+          <%= f.button :submit, 'Publish event!', class: "btn btn-primary btn-lg btn-form" %>
       <% end %>
     </div>
   </div>

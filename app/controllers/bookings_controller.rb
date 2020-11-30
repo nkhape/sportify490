@@ -1,8 +1,10 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = Booking.all
     @user = current_user
-    @bookings = policy_scope(Booking)
+    @bookings = policy_scope(@user.bookings)
+    @my_events = policy_scope(@user.events)
+    @events = policy_scope(@user.joint_events)
+    @all_events = (@events + @my_events).sort_by &:date
   end
 
   # def new
@@ -16,7 +18,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @event = Event.find(params[:event_id])
     @booking.event = @event
-    @booking.status = :request_sent
+    @booking.status = 1
     if @booking.save
       redirect_to bookings_path
     else

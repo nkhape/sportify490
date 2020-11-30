@@ -6,7 +6,7 @@
 // General style
 $font-family-sans-serif:  $body-font;
 $headings-font-family:    $headers-font;
-$body-bg:                 $light-gray;
+$body-bg:                 #FFFFFF;
 $font-size-base: 1rem;
 
 // Colors
@@ -24,7 +24,7 @@ $border-radius-sm: 2px;
 
 // Override other variables below!
 body {
-  color: #222831 !important;
+  color: $black !important;
 }
 
 .btn {
