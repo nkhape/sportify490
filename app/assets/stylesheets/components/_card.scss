@@ -20,10 +20,9 @@
 }
 
 .card-title {
-  border-bottom: 1px solid $blue;
+  border-bottom: 1px solid $light-gray;
   display: flex;
-  justify-content: space-between;
-  position: relative;
+  padding-bottom: 15px;
 }
 
 .card-title h3 {
@@ -33,7 +32,7 @@
 
 .card-title p {
   font-size: 0.9rem;
-  margin-top: 0.5rem;
+  margin: 0;
 }
 
 .card-category {
@@ -44,9 +43,7 @@
 }
 
 .card-content {
-  position: absolute;
-  right: 0;
-/*   top: 20px; */
+  margin-left: 15px;
 }
 
 .img-card-avatar {
@@ -67,8 +64,7 @@
 }
 
 .card-details p {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin: 0;
 }
 
 .card-price {
@@ -96,4 +92,9 @@
     height: 40px;
     border-radius: 50%;
     overflow: hidden;
+}
+
+.card-icon {
+  font-size: 14px;
+  color: $blue;
 }
