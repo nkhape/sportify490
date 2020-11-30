@@ -1,5 +1,5 @@
 <%# <div class="opaque-cover"></div> %>
-<div class="body-styling" style="background-image: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) ), url(<%= asset_path 'background-image.jpg' %>)">
+<div class="body-styling" style="background-image: linear-gradient(180deg, rgba(128,128,128,.8), rgba(1128,128,128,0) 50.71%), url(<%= asset_path 'background-image.jpg' %>)">
     <div class="banner">
         <div class="container-fluid mx-auto banner-text" style="width:fit-content;">
 
@@ -8,32 +8,19 @@
 
             <div class="search-bar" style="display:block">
                 <%= simple_form_for :search, url: events_path, method: "GET", html: { class: 'form-block' } do |f| %>
+                <div class="container d-flex btn btn-light" id="button-container">
+                  <%= button_tag type: 'submit', class:"search-btn" do %>
+                    <i id="search-glas" class="fas fa-search" aria-hidden="true"></i>
+                <% end %>
+                <div id="search">
+                    <%= f.input :location, input_html: {placeholder: "Type your address" }, label:false %>
+                </div>
+            </div>    
                 <%= f.input :location, input_html: {placeholder: "Type your sport" }, label:false %>    
                 <%= f.submit "Explore", class: "btn btn-primary btn-sm btn-block font-weight-bold"  %>
                 <% end %>
             </div>
         </div>
 
-    </div>
-
-    <div class="illustrations">
-
-        <div class="container illustration-pictures d-flex justify-content-around shadow p-3 mb-5rounded">
-            <div class="illustration-card container">
-                <p>Search sporting events</p>
-                <%= image_tag("search.png") %>
-                <hr / class="hr-styling">
-            </div>
-            <div class="illustration-card container">
-                <p>Apply for interesting ones</p>
-                <%= image_tag("contact.png") %>
-                <hr / class="hr-styling">
-            </div>
-            <div class="illustration-card container">
-                <p>Make friends & have fun</p>
-                <%= image_tag("fun.png") %>
-                <hr / class="hr-styling">
-            </div>
-        </div>
     </div>
 </div>

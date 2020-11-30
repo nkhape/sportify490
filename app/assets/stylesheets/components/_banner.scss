@@ -1,15 +1,14 @@
 .banner{
-    height: 60vh;
+    height: 100vh;
     line-height: 100px;
 }
 
 .banner-text{
     height: 100%;
-    color: $light-gray;
+    color: white;
     font-family: $body-font;
     line-height: 100px;
     text-align: center;
-    text-shadow: 1px 1px 2px black;
     padding-top: 40px;
 }
 
@@ -18,17 +17,43 @@
     padding-top: 20px;
 }
 
+#button-container{
+    padding: 6px !important;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.search-btn {
+    background: none;
+    color: #495057;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    padding-left: 70px;
+}
+
 .search-bar{
-    margin-top: 10px;
-    display: block;
+    justify-content: center;
+    width: 100%;
+    height: max-content;
+    padding-top: 180px;
+    display: flex;
 }
 
 .search_location{
     margin-bottom: 0;
 }
 
+#search input{
+    width: 100%;
+    border-color: white;
+    border: 1px solid #ffffff;
+}
+
 #app-name{
     font-family: "Pacifico";
-    color:$light-gray;
+    color:white;
     font-size: 10vh;
 }
