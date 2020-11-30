@@ -1,7 +1,6 @@
 // Events Show Page
 
 .show-card {
-    align-items: center;
     color: black;
     position: relative;
     border-bottom: 0.5px solid white;
@@ -25,4 +24,8 @@
 
 .event-info-show {
   margin: 20px 0px;
+}
+
+.far, .fas {
+  color: $blue;
 }

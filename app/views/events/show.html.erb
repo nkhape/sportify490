@@ -32,16 +32,16 @@
     <p><i class="far fa-calendar-alt"></i> <%= @event.date.strftime("%d/%m/%Y") %></p>
   </div>
 
+  <div>
+    <p><i class="far fa-clock"></i> <%= @event.date.strftime("%l:%M%p") %></p>
+  </div>
+
   <div class="d-flex">
     <p><i class="fas fa-money-bill-wave"></i> <%= @event.price %>€</p>
   </div>
 
   <div class="d-flex">
-    <p><i class="fas fa-users"></i> <%= @event.bookings.count %> / <%= @event.capacity %></p>
-  </div>
-
-  <div class="d-flex">
-    <p><i class="fas fa-map-marked-alt"></i> <%= @event.location %></p>
+    <p><i class="fas fa-location-arrow"></i> <%= @event.location %></p>
   </div>
 
  <div id="showmap"
@@ -51,7 +51,7 @@
 
   <% if @event.user != current_user %>
     <%= simple_form_for [@event, @booking] do |f| %>
-        <%= f.button :submit, 'Join', class: "btn btn-primary btn-lg btn-block sticky" %>
+        <%= f.button :submit, 'Join!', class: "btn btn-primary btn-lg btn-block sticky" %>
     <% end %>
   <% end %>
 
