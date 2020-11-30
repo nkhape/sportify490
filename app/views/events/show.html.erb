@@ -9,12 +9,12 @@
         <div class="d-flex justify-content-between">
           <p><span class="card-category"><%= @event.sport %></span></p>
           <% if @event.level == "Beginner" %>
-                      <p class="text-success ml-2"><%= @event.level %></p>
-                    <% elsif @event.level == "Intermediate" %>
-                      <p class="text-warning ml-2"><%= @event.level %></p>
-                    <% else %>
-                      <p class="text-danger ml-2"><%= @event.level %></p>
-                    <% end %></p>
+            <p class="text-success ml-2"><%= @event.level %></p>
+          <% elsif @event.level == "Intermediate" %>
+            <p class="text-warning ml-2"><%= @event.level %></p>
+          <% else %>
+            <p class="text-danger ml-2"><%= @event.level %></p>
+          <% end %>
         </div>
         <div>
           <p> <%= @event.bookings.count %> / <%= @event.capacity %></p>
