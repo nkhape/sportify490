@@ -12,9 +12,4 @@ Rails.application.routes.draw do
   end
 
   resources :search, only: [:index]
-
-  resources :events do
-    resources :reviews, only: [ :new, :create ]
-  end
-
 end
