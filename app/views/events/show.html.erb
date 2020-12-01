@@ -39,8 +39,11 @@
 <!-- Reviews -->
   <% if @event.users.include?(current_user) %>
     <div class="show-card-desc">
-      <% @event.users.each do |event| %>
-        <%= cl_image_tag @event.user.photo.key, class: "img-card-avatar" %>
+      <% @event.users.each do |user| %>
+      <% if  %>
+        
+      <% end %>
+        <%= cl_image_tag user.photo.key, class: "img-card-avatar" %>
       <% end %>
     </div>
   <% end %>
