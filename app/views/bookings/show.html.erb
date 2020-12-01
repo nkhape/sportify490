@@ -1,2 +1,72 @@
-<h1>booking</h1>
+<div class="show-card">
+  <div>
+    <div class="event-name-show">
+      <h2 class=""><%= @booking.event.name %></h2>
+    </div>
+    <div class="d-flex justify-content-between event-info-show">
+      <div class="d-flex justify-content-between">
+        <p><span class="card-category"><%= @booking.event.sport %></span></p>
+        <% if @booking.event.level == "Beginner" %>
+          <p class="text-success ml-2"><%= @booking.event.level %></p>
+        <% elsif @booking.event.level == "Intermediate" %>
+        <% elsif @booking.event.level == "Intermediate" %>
+          <p class="text-warning ml-2"><%= @booking.event.level %></p>
+        <% else %>
+          <p class="text-danger ml-2"><%= @booking.event.level %></p>
+        <% end %>
+      </div>
+      <div>
+        <p> <%= @booking.event.bookings.count + 1 %> / <%= @booking.event.capacity %></p>
+      </div>
+    </div>
+  </div>
+</div>
 
+<div class="container">
+  <div class="d-flex justify-content-between show-card-avatar">
+    <div>
+    <% if @booking.event.user.photo.attached? %>
+      <%= cl_image_tag @booking.event.user.photo.key, class: "img-card-avatar" %>
+    <% else %>
+      <%= image_tag 'avatar-backup.svg', width: 74 %>
+    <% end %>
+      <p class="center-text"><%= @booking.event.user.username %></p>
+    </div>
+    <div>
+      <p id="background-description"><%= @booking.event.description %></p>
+    </div>
+  </div>
+
+<!-- Reviews 
+  <% if @booking.event.users.include?(current_user) %>
+    <div class="show-card-desc">
+      <% @booking.event.users.each do |user| %>
+      <% if  %>
+        
+      <% end %>
+        <%= cl_image_tag user.photo.key, class: "img-card-avatar" %>
+      <% end %>
+    </div>
+  <% end %>
+-->
+  <div class="show-card-desc">
+    <div>
+      <p><i class="icon-blue far fa-calendar-alt"></i> <%= @booking.event.date.strftime("%d/%m/%Y") %></p>
+    </div>
+    <div>
+      <p><i class="icon-blue far fa-clock"></i> <%= @booking.event.date.strftime("%l:%M%p") %></p>
+    </div>
+    <div>
+      <p><i class="icon-blue fas fa-money-bill-wave"></i> <%= @booking.event.price %>€</p>
+    </div>
+    <div>
+      <p><i class="icon-blue fas fa-location-arrow"></i> <%= @booking.event.location %></p>
+    </div>
+  </div>
+</div>
+
+<div id="showmap"
+   style="width: 100%; height: 150px;"
+   data-marker="<%= @marker.to_json %>"
+   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
