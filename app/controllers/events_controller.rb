@@ -11,6 +11,7 @@ before_action :set_event, only: [:edit, :update, :show, :destroy]
       @events = policy_scope(Event).date_search(params[:search][:date])
     elsif params[:search][:level].present?
       @events = policy_scope(Event).level_search(params[:search][:level])
+     
     else
       @events = policy_scope(Event)
     end

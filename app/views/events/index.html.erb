@@ -23,9 +23,9 @@
     <div id="collapseFilters" class="container collapse form">
     <%= simple_form_for :search, url: events_path, method: "GET", html: { class: 'form-block' } do |f| %>
       <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
-      <%= f.input :level, collection: Event.levels.map{ |l| [l.first, l.first.humanize] }, required: false, label_method: :second, value_method: :first%>
+      <%= f.input :level, collection: Event.levels.map{ |l| [l.first, l.second] }, required: false, label_method: :first, value_method: :second%>
       <%= f.input :location, required: false, placeholder: 'Enter a location for your event' %>
-       <%= f.button :submit, 'Search', class: "btn btn-primary btn-lg btn-form mt-3" %>
+      <%= f.button :submit, 'Search', class: "btn btn-primary btn-lg btn-form mt-3" %>
     <% end %>
     </div>
 
