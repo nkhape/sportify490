@@ -1,3 +1,7 @@
+* textarea:focus{
+    background-color: white;
+}
+
 .banner{
     height: 100vh;
     line-height: 100px;
@@ -31,7 +35,8 @@
     font: inherit;
     cursor: pointer;
     outline: inherit;
-    padding-left: 70px;
+    padding-left: 20px;
+    padding-right: 10px
 }
 
 .search-bar{
@@ -47,10 +52,18 @@
 }
 
 #search input{
-    width: 100%;
+    width: 125%;
     border-color: white;
     border: 1px solid #ffffff;
+    padding-left: 10px;
 }
+
+#search input:focus {
+    border-color: white;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    color: white;
+  }
 
 #app-name{
     font-family: "Pacifico";
