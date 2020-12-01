@@ -94,3 +94,28 @@
     overflow: hidden;
 }
 
+.approve-link {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  text-decoration: none;
+  z-index: 10; /* Places the link above everything else in the div */
+  background-color: #FFF; /* Fix to make div clickable in IE */
+  opacity: 1 !important;
+}
+
+.menu-height{
+  min-height: 20px;
+}
+
+.dropdown-z {
+  z-index: 15;
+}
+
+.dropdown-buttom {
+  color: white;
+  border-radius: 3px;
+}
+
