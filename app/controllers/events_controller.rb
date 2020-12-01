@@ -23,6 +23,7 @@ before_action :set_event, only: [:edit, :update, :show, :destroy]
       }
 
     @booking = Booking.new
+    @post = Post.new
   end
 
   def new
