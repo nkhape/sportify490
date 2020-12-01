@@ -1,7 +1,3 @@
-* textarea:focus{
-    background-color: white;
-}
-
 .banner{
     height: 100vh;
     line-height: 100px;
@@ -52,7 +48,7 @@
 }
 
 #search input{
-    width: 125%;
+    width: 123%;
     border-color: white;
     border: 1px solid #ffffff;
     padding-left: 10px;
@@ -62,7 +58,8 @@
     border-color: white;
     -webkit-box-shadow: none;
     box-shadow: none;
-    color: white;
+    color: black;
+    outline: none;
   }
 
 #app-name{
