@@ -20,7 +20,6 @@
                     <p><i class="fas fa-running"></i> <span class="card-category"><%= event.sport %></span></p>
                   </div>
                   <div class="card-avatar">
-                  <%# Dynamically change the avatar depending on the user once cloudinary is installed %>
                     <% if event.user.photo.attached? %>
                       <%= cl_image_tag event.user.photo.key, class: "img-card-avatar" %>
                     <% else %>
@@ -41,7 +40,6 @@
                       <% else %>
                         <p class="text-danger font-weight-bold"><%= event.level %></p>
                       <% end %>
-                      <%# Dynamically change the amount of bookings made for that event + add if statement to change color of text %>
                       <%# booking status + photos of people who booked inside iteration %>
                     </div>
                 </div>
