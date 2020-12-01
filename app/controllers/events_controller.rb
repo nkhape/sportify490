@@ -23,7 +23,7 @@ before_action :set_event, only: [:edit, :update, :show, :destroy]
       }
 
     @booking = Booking.new
-    # @my_events_booked = Booking.where(event_id: params[:id])
+    @participants_request = Booking.where(event_id: params[:id])
   end
 
   def new

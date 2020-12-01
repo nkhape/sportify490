@@ -21,6 +21,27 @@
   </div>
 </div>
 
+<div class="card-price">
+  <%# Dynamically change the amount of bookings made for that event + add if statement to change color of text %>
+  <% @participants_request.each do |booking| %>
+    <% if current_user == @event.user %>
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-button dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= booking.status %>
+        </button>
+        <div class="dropdown-menu ">
+          <div class="menu-height">
+            <%= link_to 'Approve', booking_accept_path(booking), method: :post, class: "approve-link dropdown-item" %>
+            <%= link_to 'Cancel', booking_cancel_path(booking), method: :post, class: "approve-link dropdown-item" %>
+          </div>
+        </div>
+      </div>
+
+
+    <% end %>
+  <% end %>
+</div>
+
 <div class="container">
   <div class="d-flex justify-content-between show-card-avatar">
     <div>
@@ -36,12 +57,12 @@
     </div>
   </div>
 
-<!-- Reviews 
+<!-- Reviews
   <% if @event.users.include?(current_user) %>
     <div class="show-card-desc">
       <% @event.users.each do |user| %>
       <% if  %>
-        
+
       <% end %>
         <%= cl_image_tag user.photo.key, class: "img-card-avatar" %>
       <% end %>
