@@ -12,7 +12,7 @@
       <% @all_events.each do |event| %>
           <div class="col-12 col-lg-3">
             <div class="card-event">
-            <%= link_to "See item", booking_path(event) %>
+              <%= link_to "See item", event_path(event) %>
               <div class="card-event-description">
                 <div class="card-level">
                   <% if event.level == "Beginner" %>

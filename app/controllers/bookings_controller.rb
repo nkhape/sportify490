@@ -7,11 +7,6 @@ class BookingsController < ApplicationController
     @all_events = (@events + @my_events).sort_by &:date
   end
 
-  def show
-    @booking = Booking.find(params[:id])
-    authorize @booking
-  end
-
   # def new
   #   @booking = Booking.new
   #   @event = Event.find(params[:event_id])
