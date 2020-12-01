@@ -36,18 +36,31 @@
     </div>
   </div>
 
-<!-- Reviews 
-  <% if @event.users.include?(current_user) %>
-    <div class="show-card-desc">
+<!-- Reviews -->
+  <% if @event.users.include?(current_user) %> <%# && @event.date < Time.now %>
+   <div class="show-card-desc">
+    <h4>Rate the experience you had with the other players!</h3>
       <% @event.users.each do |user| %>
-      <% if  %>
-        
-      <% end %>
-        <%= cl_image_tag user.photo.key, class: "img-card-avatar" %>
+        <div class="d-flex align-items-center my-3">
+          <div>
+            <%# <% unless user == current_user %>
+            <% if user.photo.attached? %>
+              <%= cl_image_tag user.photo.key, class: "img-review" %>
+            <% else %>
+              <%= image_tag 'avatar-backup.svg', width: 50 %>
+            <% end %>
+            <p class="center-text"><%= user.username %></p>
+          </div>
+          <div class="ml-3">
+            <p><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></p>
+            <a href="#" class="btn btn-primary">Rate <%= user.username %></a>
+          </div>
+        </div>
+        <%# <% end %>
       <% end %>
     </div>
   <% end %>
--->
+
   <div class="show-card-desc">
     <div>
       <p><i class="icon-blue far fa-calendar-alt"></i> <%= @event.date.strftime("%d/%m/%Y") %></p>
