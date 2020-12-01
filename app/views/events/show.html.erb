@@ -32,7 +32,7 @@
       <p class="center-text"><%= @event.user.username %></p>
     </div>
     <div>
-      <p id="background-description"><%= @event.description %></p>
+      <p class="text-background"><%= @event.description %></p>
     </div>
   </div>
 
@@ -84,7 +84,34 @@
     <%= link_to 'Delete', @event, method: :delete, data: { confirm: 'Are you sure you want to delete this event?' }, class: "ml-3 btn btn-outline-danger btn-md my-2" %>
   <% end %>
 </div>
- <!--  <div>
-    <p>....comments....</p>
-  </div> -->
+
+<div class="container comments">
+  <h2>Comments</h2>
+  <div>
+    <% @event.posts.each do |post| %>
+      <div id="post-<%= post.id  %>">
+        <div class="d-flex justify-content-between">
+          <div>
+            <i>
+              <span><b><%= post.user.username %></b></span>
+              <small class="ml-1"><%= post.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+            </i>
+          </div>
+          <div>
+            <% if policy(post).destroy? %>
+              <%= link_to "", post_path(post), method: :delete, data: { confirm: 'Are you sure you want to delete this comment?' }, class: "mr-2 far fa-trash-alt" %>
+          </div>
+            <% end %>
+        </div>
+        <p class="text-background"><%= post.content %></p>
+      </div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= simple_form_for [ @event, @post ], remote: true do |f| %>
+    <%= f.input :content, label: false, placeholder: "Send Comment" %>
+    <% end %>
+  </div>
+</div>
 
