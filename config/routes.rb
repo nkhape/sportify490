@@ -9,4 +9,8 @@ Rails.application.routes.draw do
   resources :bookings, only: :index
   resources :search, only: [:index]
 
+  resources :events do
+    resources :reviews, only: [ :new, :create ]
+  end
+
 end

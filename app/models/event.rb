@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
   belongs_to :user
-  has_many :users, through: :bookings
   has_many :bookings
+  has_many :users, through: :bookings
 
   include PgSearch::Model
   pg_search_scope :global_search,
