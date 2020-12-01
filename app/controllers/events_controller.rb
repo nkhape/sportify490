@@ -24,6 +24,7 @@ before_action :set_event, only: [:edit, :update, :show, :destroy]
 
     @booking = Booking.new
     @post = Post.new
+    # @my_events_booked = Booking.where(event_id: params[:id])
   end
 
   def new
