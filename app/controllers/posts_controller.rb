@@ -16,8 +16,9 @@ def create
   def destroy
     @post = Post.find(params[:id])
     authorize @post
+    @event = @post.event
     @post.destroy
-    redirect_to events_path(@event)
+    redirect_to event_path(@event)
   end
 
 private
