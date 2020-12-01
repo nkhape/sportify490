@@ -4,13 +4,8 @@ class Event < ApplicationRecord
   has_many :bookings
 
   include PgSearch::Model
-  pg_search_scope :global_search, lambda { |params, query|
-    raise ArgumentError unless [:location, :sport, :date, :level].include?(params)
-    {
-      against: params,
-      query: query
-    }
-  }
+  pg_search_scope :global_search, 
+  against: [:location, :sport, :level, :date]
 
   pg_search_scope :date_search,
   against: [:date]
