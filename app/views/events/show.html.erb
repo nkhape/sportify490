@@ -15,7 +15,7 @@
         <% end %>
       </div>
       <div>
-        <p> <%= @event.bookings.count %> / <%= @event.capacity %></p>
+        <p> <%= @event.bookings.count + 1 %> / <%= @event.capacity %></p>
       </div>
     </div>
   </div>
@@ -36,7 +36,7 @@
     </div>
   </div>
 
-<!-- Reviews -->
+<!-- Reviews 
   <% if @event.users.include?(current_user) %>
     <div class="show-card-desc">
       <% @event.users.each do |user| %>
@@ -47,7 +47,7 @@
       <% end %>
     </div>
   <% end %>
-
+-->
   <div class="show-card-desc">
     <div>
       <p><i class="icon-blue far fa-calendar-alt"></i> <%= @event.date.strftime("%d/%m/%Y") %></p>
