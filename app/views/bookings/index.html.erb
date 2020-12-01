@@ -25,7 +25,6 @@
                 </div>
                 <div class="card-title">
                   <div class="card-avatar">
-                  <%# Dynamically change the avatar depending on the user once cloudinary is installed %>
                     <% if event.user.photo.attached? %>
                       <%= cl_image_tag event.user.photo.key, class: "img-card-avatar" %>
                     <% else %>
@@ -70,7 +69,6 @@
                       <p><i class="far fa-calendar-alt"></i> <%= event.date.strftime("%d/%m/%Y") %></p>
                       <p><i class="fas fa-map-pin"></i> <%= event.location.truncate(22) %></p>
                     </div>
-                      <%# Dynamically change the amount of bookings made for that event + add if statement to change color of text %>
                       <%# booking status + photos of people who booked inside iteration %>
                 </div> -->
               </div>

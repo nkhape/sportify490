@@ -5,6 +5,7 @@ class BookingsController < ApplicationController
     @my_events = policy_scope(@user.events)
     @events = policy_scope(@user.joint_events)
     @all_events = (@events + @my_events).sort_by &:date
+
   end
 
   # def new
