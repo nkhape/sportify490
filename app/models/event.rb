@@ -10,11 +10,23 @@ class Event < ApplicationRecord
     tsearch: { prefix: true }
   }
 
+  pg_search_scope :date_search,
+  against: [:date]
+
+  pg_search_scope :sport_search,
+  against: [:sport],
+  using: {
+    tsearch: { prefix: true }
+  }
+
   pg_search_scope :location_search,
   against: [:location],
   using: {
     tsearch: { prefix: true }
   }
+
+  pg_search_scope :level_search,
+  against: [:level]
 
   enum level: { Beginner: 1, Intermediate: 2, Advanced: 3, Pro: 4 }
 

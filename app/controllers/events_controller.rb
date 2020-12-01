@@ -3,11 +3,18 @@ class EventsController < ApplicationController
 before_action :set_event, only: [:edit, :update, :show, :destroy]
 
   def index
-    if params[:search].present?
+    if params[:search][:location].present?
       @events = policy_scope(Event).location_search(params[:search][:location])
-  else
+    elsif params[:search][:sport].present?
+      @events = policy_scope(Event).sport_search(params[:search][:sport])
+    elsif params[:search][:date].present?
+      @events = policy_scope(Event).date_search(params[:search][:date])
+    elsif params[:search][:level].present?
+      @events = policy_scope(Event).level_search(params[:search][:level])
+    else
       @events = policy_scope(Event)
-  end
+    end
+  
     @markers = @events.geocoded.map do |event|
       {
         lat: event.latitude,
