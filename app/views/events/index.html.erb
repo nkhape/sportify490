@@ -25,7 +25,6 @@
 
   <div class="cards-events row">
     <% @events.each do |event| %>
-     <% if event.bookings.count + 1 < event.capacity %>
         <div class="col-12 col-lg-3">
           <div class="card-event">
           <%= link_to "See item", event_path(event) %>
@@ -69,7 +68,6 @@
             </div>
           </div>
         </div>
-      <% end %>
     <% end %>
   </div>
 </div>
