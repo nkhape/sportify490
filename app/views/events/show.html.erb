@@ -24,7 +24,11 @@
 <div class="container">
   <div class="d-flex justify-content-between show-card-avatar">
     <div>
+    <% if @event.user.photo.attached? %>
       <%= cl_image_tag @event.user.photo.key, class: "img-card-avatar" %>
+    <% else %>
+      <%= image_tag 'avatar-backup.svg', width: 74 %>
+    <% end %>
       <p class="center-text"><%= @event.user.username %></p>
     </div>
     <div>
