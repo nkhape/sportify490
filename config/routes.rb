@@ -6,7 +6,11 @@ Rails.application.routes.draw do
     resources :bookings, only: [:create]
   end
 
-  resources :bookings, only: :index
+  resources :bookings, only: [:index, :show] do
+    post "accept", to: "bookings#accept", as: "accept"
+    post "cancel", to: "bookings#cancel", as: "cancel"
+  end
+
   resources :search, only: [:index]
 
   resources :events do

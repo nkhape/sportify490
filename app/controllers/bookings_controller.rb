@@ -7,6 +7,11 @@ class BookingsController < ApplicationController
     @all_events = (@events + @my_events).sort_by &:date
   end
 
+  def show
+    @booking = Booking.find(params[:id])
+    authorize @booking
+  end
+
   # def new
   #   @booking = Booking.new
   #   @event = Event.find(params[:event_id])
@@ -26,6 +31,29 @@ class BookingsController < ApplicationController
     end
     authorize @booking
   end
+
+  def accept
+    @booking = Booking.find(params[:booking_id])
+    @booking.approved!
+    authorize @booking
+    @booking.save
+    redirect_to bookings_path, notice: "Your booking was accepted"
+  end
+
+  def cancel
+    @booking = Booking.find(params[:booking_id])
+    @booking.cancelled!
+    authorize @booking
+    @booking.save
+    redirect_to bookings_path, notice: "Your booking was cancelled"
+  end
+
+  # def edit
+  # end
+
+  # def update
+  #   @update_status = @booking.status.update!(booking_params)
+  # end
 
   private
 

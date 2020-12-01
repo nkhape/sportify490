@@ -12,4 +12,12 @@ class BookingPolicy < ApplicationPolicy
   def create?
     true
   end
+
+  def accept?
+    record.event.user == user
+  end
+
+  def cancel?
+    true
+  end
 end
