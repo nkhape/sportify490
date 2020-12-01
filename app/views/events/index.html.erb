@@ -47,6 +47,8 @@
                 <%# Dynamically change the avatar depending on the user once cloudinary is installed %>
                 <% if event.user.photo.attached? %>
                   <%= cl_image_tag event.user.photo.key, class: "img-card-avatar" %>
+                <% else %>
+                  <%= image_tag 'avatar-backup.svg', width: 74 %>
                 <% end %>
                 </div>
                 <div class="card-content">
