@@ -2,11 +2,33 @@
 <div class="container">
 
   <div class="search-section">
+
     <div class="search-box">
-      <p class="search-text"><i class="fas fa-search search-icon"></i> Type your favorite sport...</p>
-    </div>
-    <div class="filter-element"><i class="fas fa-sliders-h filter-icon"></i></div>
+    <%= simple_form_for :search, url: events_path, method: "GET", html: { class: 'form-block' } do |f| %>
+      <div class="container d-flex">
+        <%= button_tag type: 'submit', class:"search-icon" do %>
+        <i class="fas fa-search" aria-hidden="true"></i>
+        <% end %>
+
+        <div class="search-text" style="margin:0px;">
+        <%= f.input :sport, input_html: {placeholder: "Type your sport" }, label:false %>
+        </div>
+      </div>
+    <% end %>
   </div>
+    <a class="filter-element" data-toggle="collapse" href="#collapseFilters"><i class="fas fa-sliders-h filter-icon"></i></a>
+  </div>
+    </div>
+
+    <div id="collapseFilters" class="container collapse form">
+    <%= simple_form_for :search, url: events_path, method: "GET", html: { class: 'form-block' } do |f| %>
+      <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
+      <%= f.input :level, collection: Event.levels.map{ |l| [l.first, l.second] }, required: false, label_method: :first, value_method: :second%>
+      <%= f.input :location, required: false, placeholder: 'Enter a location for your event' %>
+      <%= f.button :submit, 'Search', class: "btn btn-primary btn-lg btn-form mt-3" %>
+    <% end %>
+    </div>
+
   <%#  %>
 
     <!-- <%# MAP CODE %>

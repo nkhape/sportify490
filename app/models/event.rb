@@ -6,9 +6,15 @@ class Event < ApplicationRecord
 
 
   include PgSearch::Model
-  pg_search_scope :global_search,
-   against: [:location, :sport, :date, :price, :capacity, :level],
-   using: {
+  pg_search_scope :global_search, 
+  against: [:location, :sport, :level, :date]
+
+  pg_search_scope :date_search,
+  against: [:date]
+
+  pg_search_scope :sport_search,
+  against: [:sport],
+  using: {
     tsearch: { prefix: true }
   }
 
@@ -17,6 +23,9 @@ class Event < ApplicationRecord
   using: {
     tsearch: { prefix: true }
   }
+
+  pg_search_scope :level_search,
+  against: [:level]
 
   enum level: { Beginner: 1, Intermediate: 2, Advanced: 3, Pro: 4 }
 
