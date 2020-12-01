@@ -4,10 +4,11 @@ Rails.application.routes.draw do
 
   resources :events do
     resources :bookings, only: [:create]
-    resources :posts, only: [:create, :destroy]
+    resources :posts, only: [:create]
   end
 
   resources :bookings, only: :index
   resources :search, only: [:index]
+  resources :posts, only: :destroy
 
 end

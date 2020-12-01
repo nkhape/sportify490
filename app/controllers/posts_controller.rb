@@ -13,9 +13,10 @@ def create
     end
   end
 
-  def delete
-    @event = Event.find(params[:event_id])
-    @event.destroy
+  def destroy
+    @post = Post.find(params[:id])
+    authorize @post
+    @post.destroy
     redirect_to events_path(@event)
   end
 
