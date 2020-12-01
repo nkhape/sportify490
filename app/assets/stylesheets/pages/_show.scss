@@ -22,12 +22,7 @@
     margin: 20px 10px 0px 10px;
 }
 
-.sticky {
-  position: sticky;
-  bottom: 0;
-}
-
-#background-description {
+.text-background {
   background-color: $light-blue;
   padding: 10px;
   margin-left: 20px;
@@ -60,4 +55,8 @@
 .btn-md {
   width: 143px;
   height: 43px;
+}
+
+.comments {
+  margin-top: 30px;
 }
