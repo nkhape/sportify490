@@ -24,7 +24,11 @@
 <div class="container">
   <div class="d-flex justify-content-between show-card-avatar">
     <div>
+    <% if @event.user.photo.attached? %>
       <%= cl_image_tag @event.user.photo.key, class: "img-card-avatar" %>
+    <% else %>
+      <%= image_tag 'avatar-backup.svg', width: 74 %>
+    <% end %>
       <p class="center-text"><%= @event.user.username %></p>
     </div>
     <div>
@@ -33,16 +37,16 @@
   </div>
   <div class="show-card-desc">
     <div>
-      <p><i class="icon far fa-calendar-alt"></i> <%= @event.date.strftime("%d/%m/%Y") %></p>
+      <p><i class="icon-blue far fa-calendar-alt"></i> <%= @event.date.strftime("%d/%m/%Y") %></p>
     </div>
     <div>
-      <p><i class="icon far fa-clock"></i> <%= @event.date.strftime("%l:%M%p") %></p>
+      <p><i class="icon-blue far fa-clock"></i> <%= @event.date.strftime("%l:%M%p") %></p>
     </div>
     <div>
-      <p><i class="icon fas fa-money-bill-wave"></i> <%= @event.price %>€</p>
+      <p><i class="icon-blue fas fa-money-bill-wave"></i> <%= @event.price %>€</p>
     </div>
     <div>
-      <p><i class="icon fas fa-location-arrow"></i> <%= @event.location %></p>
+      <p><i class="icon-blue fas fa-location-arrow"></i> <%= @event.location %></p>
     </div>
   </div>
 </div>

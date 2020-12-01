@@ -11,4 +11,6 @@ Rails.application.routes.draw do
     post "cancel", to: "bookings#cancel", as: "cancel"
   end
 
+  resources :search, only: [:index]
+
 end
