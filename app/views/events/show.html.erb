@@ -79,7 +79,7 @@
       <p class="text-background"><%= @event.description %></p>
     </div>
   </div>
-  
+
 <!-- Reviews -->
   <% if policy(@event).can_review? && @event.users.present? && @event.date < Time.now %> <%# && @event.date < Time.now %>
    <div class="show-card-desc">
@@ -115,19 +115,19 @@
       <% end %>
     </div>
   <% end %>
-  
+
   <div class="show-card-desc">
     <div>
-      <p><i class="icon far fa-calendar-alt"></i> <%= @event.date.strftime("%d/%m/%Y") %></p>
+      <p><i class="icon-blue far fa-calendar-alt"></i> <%= @event.date.strftime("%d/%m/%Y") %></p>
     </div>
     <div>
-      <p><i class="icon far fa-clock"></i> <%= @event.date.strftime("%l:%M%p") %></p>
+      <p><i class="icon-blue far fa-clock"></i> <%= @event.date.strftime("%l:%M%p") %></p>
     </div>
     <div>
-      <p><i class="icon fas fa-money-bill-wave"></i> <%= @event.price %>€</p>
+      <p><i class="icon-blue fas fa-money-bill-wave"></i> <%= @event.price %>€</p>
     </div>
     <div>
-      <p><i class="icon fas fa-location-arrow"></i> <%= @event.location %></p>
+      <p><i class="icon-blue fas fa-location-arrow"></i> <%= @event.location %></p>
     </div>
   </div>
 </div>
