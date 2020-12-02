@@ -35,7 +35,43 @@
       <p class="text-background"><%= @event.description %></p>
     </div>
   </div>
-
+  
+<!-- Reviews -->
+  <% if policy(@event).can_review? && @event.users.present? && @event.date < Time.now %> <%# && @event.date < Time.now %>
+   <div class="show-card-desc">
+    <h4>Rate the experience you had with the other players!</h3>
+      <% @event.users.each do |user| %>
+        <div class="d-flex align-items-center my-3">
+          <div>
+            <% unless user == current_user %>
+            <% if user.photo.attached? %>
+              <%= cl_image_tag user.photo.key, class: "img-review" %>
+            <% else %>
+              <%= image_tag 'avatar-backup.svg', width: 50 %>
+            <% end %>
+            <p class="center-text"><%= user.username %></p>
+          </div>
+          <div class="ml-3">
+            <p>
+            <% 5.times do |time| %>
+              <% review = user.reviews.where(reviewer: current_user)&.first %>
+              <% if review.blank? %>
+                <%= link_to event_reviews_path([@event, Review.new], rating: "#{time + 1}", user_id: user.id), method: :post do %>
+                  <i class="far fa-star" id="rating-<%= time + 1 %>"></i>
+                <% end %>
+              <% else %>
+                  <i class="fa<%= time + 1 <= review.rating ? 's' : 'r' %> fa-star" id="rating-<%= time + 1 %>"></i>
+              <% end %>
+            <% end %>
+            </p>
+            <%# <%= link_to "Remove review", event_reviews_path, method: :delete, data: { confirm: "Delete this review?" } %>
+          </div>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+  
   <div class="show-card-desc">
     <div>
       <p><i class="icon-blue far fa-calendar-alt"></i> <%= @event.date.strftime("%d/%m/%Y") %></p>
