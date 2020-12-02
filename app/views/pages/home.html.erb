@@ -7,7 +7,7 @@
             <h3 class="banner-text-header">Meet your buddy and go!</h3>
 
             <div class="search-bar" style="display:block">
-                <%= simple_form_for :search, url: events_path, method: "GET", html: { class: 'form-block' } do |f| %>
+               <%= simple_form_for :search, url: events_path, method: "GET", html: { class: 'form-block' } do |f| %>
                 <div class="container d-flex btn btn-light" id="button-container">
                   <%= button_tag type: 'submit', class:"search-btn" do %>
                     <i id="search-glas" class="fas fa-search" aria-hidden="true"></i>

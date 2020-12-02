@@ -8,15 +8,6 @@ class BookingsController < ApplicationController
 
   end
 
-  def show
-    @booking = Booking.find(params[:id])
-    authorize @booking
-    @marker = {
-        lat: @booking.event.latitude,
-        lng: @booking.event.longitude
-    }
-  end
-
   # def new
   #   @booking = Booking.new
   #   @event = Event.find(params[:event_id])
