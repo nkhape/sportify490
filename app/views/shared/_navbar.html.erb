@@ -36,11 +36,17 @@
 
     <%= link_to bookings_path, class: "navbar-btn" do %>
     <% if url.include?('bookings') %>
-      <p class="nav-img-active"><i class="fas fa-user"></i></p>
-      <div class="nav-text"><p class="nav-text-active">Profile</p></div>
+      <% if current_user.photo.attached? %>
+        <%= cl_image_tag current_user.photo.key, class: "img-navbar-avatar-active" %>
+      <% else %>
+        <%= image_tag 'avatar-backup.svg', width: 42 %>
+      <% end %>
     <% else %>
-      <p class="nav-img"><i class="fas fa-user"></i></p>
-      <div class="nav-text"><p>Profile</p></div>
+      <% if current_user.photo.attached? %>
+        <%= cl_image_tag current_user.photo.key, class: "img-navbar-avatar" %>
+      <% else %>
+        <%= image_tag 'avatar-backup.svg', width: 42 %>
+      <% end %>
     <% end %>
     <% end %>
 
