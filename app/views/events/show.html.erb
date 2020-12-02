@@ -5,13 +5,13 @@
     </div>
     <div class="d-flex justify-content-between event-info-show">
       <div class="d-flex justify-content-between">
-        <p><span class="card-category"><%= @event.sport %></span></p>
+        <p><span class="card-category"><%= @event.sport.capitalize %></span></p>
         <% if @event.level == "Beginner" %>
-          <p class="text-success ml-2"><%= @event.level %></p>
+          <p class="text-success ml-2"><span class="level-green"><%= @event.level %></span></p>
         <% elsif @event.level == "Intermediate" %>
-          <p class="text-warning ml-2"><%= @event.level %></p>
+          <p class="text-warning ml-2"><span class="level-orange"><%= @event.level %></span></p>
         <% else %>
-          <p class="text-danger ml-2"><%= @event.level %></p>
+          <p class="text-danger ml-2"><span class="level-red"><%= @event.level %></span></p>
         <% end %>
       </div>
       <div>
@@ -121,16 +121,16 @@
 
   <div class="show-card-desc">
     <div>
-      <p><i class="icon-blue far fa-calendar-alt"></i> <%= @event.date.strftime("%d/%m/%Y") %></p>
+      <p><i class="icon-blue far fa-calendar-alt mr-2"></i> <%= @event.date.strftime("%d/%m/%Y") %></p>
     </div>
     <div>
-      <p><i class="icon-blue far fa-clock"></i> <%= @event.date.strftime("%l:%M%p") %></p>
+      <p><i class="icon-blue far fa-clock mr-2"></i> <%= @event.date.strftime("%l:%M%p") %></p>
     </div>
     <div>
-      <p><i class="icon-blue fas fa-money-bill-wave"></i> <%= @event.price %>€</p>
+      <p><i class="icon-blue fas fa-money-bill-wave mr-2"></i> <%= @event.price %>€</p>
     </div>
     <div>
-      <p><i class="icon-blue fas fa-location-arrow"></i> <%= @event.location %></p>
+      <p><i class="icon-blue fas fa-location-arrow mr-2"></i> <%= @event.location %></p>
     </div>
   </div>
 </div>

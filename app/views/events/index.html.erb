@@ -74,7 +74,7 @@
               </div>
               <div class="card-details">
                 <div>
-                  <p><span class="card-category"><%= event.sport %></span></p>
+                  <p><span class="card-category"><%= event.sport.capitalize %></span></p>
                 </div>
                   <div class="card-price">
                     <% if event.bookings.count == event.capacity %>
