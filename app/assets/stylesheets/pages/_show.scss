@@ -73,3 +73,22 @@
   margin-top: 20px;
   padding-top: 10px;
 }
+
+.level-green {
+  background: $green;
+  border-radius: 10px;
+  padding: 2px 10px;
+  color: white;
+}
+.level-orange {
+  background: $orange;
+  border-radius: 10px;
+  padding: 2px 10px;
+  color: white;
+}
+.level-red {
+  background: $red;
+  border-radius: 10px;
+  padding: 2px 10px;
+  color: white;
+}
