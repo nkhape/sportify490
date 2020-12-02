@@ -37,7 +37,7 @@
   </div>
 
 <!-- Reviews -->
-  <% if policy(@event).can_review? %> <%# && @event.date < Time.now %>
+  <% if policy(@event).can_review? && @event.users.present? && @event.date < Time.now %> <%# && @event.date < Time.now %>
    <div class="show-card-desc">
     <h4>Rate the experience you had with the other players!</h3>
       <% @event.users.each do |user| %>
@@ -64,6 +64,7 @@
               <% end %>
             <% end %>
             </p>
+            <%# <%= link_to "Remove review", event_reviews_path, method: :delete, data: { confirm: "Delete this review?" } %>
           </div>
         </div>
         <% end %>
