@@ -17,7 +17,6 @@
   </div>
     <a class="filter-element" data-toggle="collapse" href="#collapseFilters"><i class="fas fa-sliders-h filter-icon"></i></a>
   </div>
-    </div>
 
     <div id="collapseFilters" class="container collapse form">
     <%= simple_form_for :search, url: events_path, method: "GET", html: { class: 'form-block' } do |f| %>
@@ -27,7 +26,6 @@
       <%= f.button :submit, 'Search', class: "btn btn-primary btn-lg btn-form mt-3" %>
     <% end %>
     </div>
-
   <%#  %>
 
     <!-- <%# MAP CODE %>
