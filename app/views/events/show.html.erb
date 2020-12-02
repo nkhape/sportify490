@@ -37,13 +37,13 @@
   </div>
 
 <!-- Reviews -->
-  <% if @event.users.include?(current_user) %> <%# && @event.date < Time.now %>
+  <% if policy(@event).can_review? %> <%# && @event.date < Time.now %>
    <div class="show-card-desc">
     <h4>Rate the experience you had with the other players!</h3>
       <% @event.users.each do |user| %>
         <div class="d-flex align-items-center my-3">
           <div>
-            <%# <% unless user == current_user %>
+            <% unless user == current_user %>
             <% if user.photo.attached? %>
               <%= cl_image_tag user.photo.key, class: "img-review" %>
             <% else %>
@@ -52,11 +52,21 @@
             <p class="center-text"><%= user.username %></p>
           </div>
           <div class="ml-3">
-            <p><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i></p>
-            <a href="#" class="btn btn-primary">Rate <%= user.username %></a>
+            <p>
+            <% 5.times do |time| %>
+              <% review = user.reviews.where(reviewer: current_user)&.first %>
+              <% if review.blank? %>
+                <%= link_to event_reviews_path([@event, Review.new], rating: "#{time + 1}", user_id: user.id), method: :post do %>
+                  <i class="far fa-star" id="rating-<%= time + 1 %>"></i>
+                <% end %>
+              <% else %>
+                  <i class="fa<%= time + 1 <= review.rating ? 's' : 'r' %> fa-star" id="rating-<%= time + 1 %>"></i>
+              <% end %>
+            <% end %>
+            </p>
           </div>
         </div>
-        <%# <% end %>
+        <% end %>
       <% end %>
     </div>
   <% end %>
