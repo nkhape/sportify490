@@ -35,7 +35,7 @@
       <p class="text-background"><%= @event.description %></p>
     </div>
   </div>
-
+  
 <!-- Reviews -->
   <% if policy(@event).can_review? && @event.users.present? && @event.date < Time.now %> <%# && @event.date < Time.now %>
    <div class="show-card-desc">
@@ -71,7 +71,7 @@
       <% end %>
     </div>
   <% end %>
-
+  
   <div class="show-card-desc">
     <div>
       <p><i class="icon-blue far fa-calendar-alt"></i> <%= @event.date.strftime("%d/%m/%Y") %></p>
@@ -138,4 +138,3 @@
     <% end %>
   </div>
 </div>
-
