@@ -8,7 +8,7 @@
           <%= f.input :description, placeholder: 'Introduce yourself and describe the event' %>
           <%= f.input :price, placeholder: 'e.g 5' %>
           <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
-          <%= f.input :capacity, placeholder: '2' %>
+          <%= f.input :capacity, placeholder: 'e.g. 2' %>
           <%= f.input :level, collection: Event.levels.map{ |l| [l.first, l.first.humanize] }, label_method: :second, value_method: :first%>
           <%= f.input :location, placeholder: 'Enter a location for your event' %>
           <%= f.button :submit, 'Publish event!', class: "btn btn-primary btn-lg btn-form" %>
