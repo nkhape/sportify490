@@ -5,7 +5,6 @@ class BookingsController < ApplicationController
     @my_events = policy_scope(@user.events)
     @events = policy_scope(@user.joint_events)
     @all_events = (@events + @my_events).sort_by &:date
-
   end
 
   # def new
@@ -33,7 +32,7 @@ class BookingsController < ApplicationController
     @booking.approved!
     authorize @booking
     @booking.save
-    redirect_to bookings_path, notice: "Your booking was accepted"
+    redirect_to event_path(@booking.event), notice: "Your booking was accepted"
   end
 
   def cancel
@@ -41,7 +40,12 @@ class BookingsController < ApplicationController
     @booking.cancelled!
     authorize @booking
     @booking.save
-    redirect_to bookings_path, notice: "Your booking was cancelled"
+    # request.referrer.split("/").last
+    if request.referrer.split("/").last == "bookings"
+     redirect_to bookings_path, notice: "Your booking was cancelled"
+   else
+    redirect_to event_path(@booking.event), notice: "Your booking was cancelled"
+    end
   end
 
   # def edit
