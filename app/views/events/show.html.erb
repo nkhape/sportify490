@@ -15,72 +15,82 @@
         <% end %>
       </div>
       <div>
-        <p> <%= @event.bookings.count + 1 %> / <%= @event.capacity %></p>
+        <p> <%= @event.bookings.count %> / <%= @event.capacity %></p>
       </div>
     </div>
   </div>
 </div>
 
-<div class="card-price">
-  <%# Dynamically change the amount of bookings made for that event + add if statement to change color of text %>
-  <% @participants_request.each do |booking| %>
-    <% if current_user == @event.user %>
-      <div class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-button dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= booking.status %>
-        </button>
-        <div class="dropdown-menu ">
-          <div class="menu-height">
-            <%= link_to 'Approve', booking_accept_path(booking), method: :post, class: "approve-link dropdown-item" %>
-            <%= link_to 'Cancel', booking_cancel_path(booking), method: :post, class: "approve-link dropdown-item" %>
-          </div>
-        </div>
-      </div>
-
-
+<% if current_user == @event.user %>
+  <div class="container">
+    <% if @participants_request.all? { |booking| booking.status == "cancelled" }%>
+      <h3 class="text-center">Manage request</h3>
+      <p>You don't have any pending request.</p>
+    <% else %>
+      <h3 class="text-center">Manage request</h3>
     <% end %>
-  <% end %>
-</div>
+    <div class="d-flex justify-content-between show-card-avatar">
+      <%# Dynamically change the amount of bookings made for that event + add if statement to change color of text %>
+      <% @participants_request.each do |booking| %>
+       <% if booking.status != "cancelled" %>
+         <div>
+          <%= cl_image_tag booking.user.photo.key, class: "img-card-avatar-booking" %>
+          <p class="center-text"><%= booking.user.username %></p>
+        </div>
+        <% if booking.status == "pending" %>
+          <div>
+            <button type="button" class="btn btn-primary dropdown-button dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= booking.status %>
+            </button>
+            <div class="dropdown-menu">
+              <div class="menu-height">
+                <%= link_to 'Approve', booking_accept_path(booking), method: :post, class: "approve-link dropdown-item" %>
+              </div>
+              <div class="menu-height">
+                <%= link_to 'Cancel', booking_cancel_path(booking), method: :post, class: "approve-link dropdown-item" %>
+              </div>
+            </div>
+          </div>
+         <% else %>
+          <div>
+            <button type="button" class="btn btn-primary dropdown-button dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= booking.status %>
+            </button>
+            <div class="dropdown-menu">
+              <div class="menu-height">
+                <%= link_to 'Cancel', booking_cancel_path(booking), method: :post, class: "approve-link dropdown-item" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
 
 <div class="container">
   <div class="d-flex justify-content-between show-card-avatar">
     <div>
-    <% if @event.user.photo.attached? %>
       <%= cl_image_tag @event.user.photo.key, class: "img-card-avatar" %>
-    <% else %>
-      <%= image_tag 'avatar-backup.svg', width: 74 %>
-    <% end %>
       <p class="center-text"><%= @event.user.username %></p>
     </div>
     <div>
       <p id="background-description"><%= @event.description %></p>
     </div>
   </div>
-
-<!-- Reviews
-  <% if @event.users.include?(current_user) %>
-    <div class="show-card-desc">
-      <% @event.users.each do |user| %>
-      <% if  %>
-
-      <% end %>
-        <%= cl_image_tag user.photo.key, class: "img-card-avatar" %>
-      <% end %>
-    </div>
-  <% end %>
--->
   <div class="show-card-desc">
     <div>
-      <p><i class="icon-blue far fa-calendar-alt"></i> <%= @event.date.strftime("%d/%m/%Y") %></p>
+      <p><i class="icon far fa-calendar-alt"></i> <%= @event.date.strftime("%d/%m/%Y") %></p>
     </div>
     <div>
-      <p><i class="icon-blue far fa-clock"></i> <%= @event.date.strftime("%l:%M%p") %></p>
+      <p><i class="icon far fa-clock"></i> <%= @event.date.strftime("%l:%M%p") %></p>
     </div>
     <div>
-      <p><i class="icon-blue fas fa-money-bill-wave"></i> <%= @event.price %>€</p>
+      <p><i class="icon fas fa-money-bill-wave"></i> <%= @event.price %>€</p>
     </div>
     <div>
-      <p><i class="icon-blue fas fa-location-arrow"></i> <%= @event.location %></p>
+      <p><i class="icon fas fa-location-arrow"></i> <%= @event.location %></p>
     </div>
   </div>
 </div>
