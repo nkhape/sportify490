@@ -1,6 +1,8 @@
 require 'open-uri'
 
 Booking.destroy_all
+Review.destroy_all
+Post.destroy_all
 Event.destroy_all
 User.destroy_all
 
