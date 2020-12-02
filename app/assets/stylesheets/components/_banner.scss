@@ -31,7 +31,8 @@
     font: inherit;
     cursor: pointer;
     outline: inherit;
-    padding-left: 70px;
+    padding-left: 20px;
+    padding-right: 10px
 }
 
 .search-bar{
@@ -47,10 +48,19 @@
 }
 
 #search input{
-    width: 100%;
+    width: 123%;
     border-color: white;
     border: 1px solid #ffffff;
+    padding-left: 10px;
 }
+
+#search input:focus {
+    border-color: white;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    color: black;
+    outline: none;
+  }
 
 #app-name{
     font-family: "Pacifico";
