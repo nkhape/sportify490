@@ -6,14 +6,14 @@
   <div class="search-section">
 
     <div class="search-box">
-    <%= simple_form_for :search, url: events_path, method: "GET", html: { class: 'form-block' } do |f| %>
+    <%= simple_form_for :search, url: events_path, method: "GET", input_html: { class: 'form-block' } do |f| %>
       <div class="container d-flex">
         <%= button_tag type: 'submit', class:"search-icon" do %>
         <i class="fas fa-search" aria-hidden="true"></i>
         <% end %>
 
-        <div class="search-text" style="margin:0px;">
-        <%= f.input :sport, input_html: {placeholder: "Type your sport" }, label:false %>
+        <div class="search-text">
+        <%= f.input :sport, input_html: { placeholder: "Type your sport" }, label:false %>
         </div>
       </div>
     <% end %>
