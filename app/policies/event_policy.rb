@@ -24,4 +24,8 @@ class EventPolicy < ApplicationPolicy
   def destroy?
     record.user == user
   end
+
+  def can_review?
+    user == record.user || record.users.include?(user)
+  end
 end
