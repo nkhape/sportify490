@@ -36,18 +36,6 @@
     </div>
   </div>
 
-<!-- Reviews 
-  <% if @event.users.include?(current_user) %>
-    <div class="show-card-desc">
-      <% @event.users.each do |user| %>
-      <% if  %>
-        
-      <% end %>
-        <%= cl_image_tag user.photo.key, class: "img-card-avatar" %>
-      <% end %>
-    </div>
-  <% end %>
--->
   <div class="show-card-desc">
     <div>
       <p><i class="icon-blue far fa-calendar-alt"></i> <%= @event.date.strftime("%d/%m/%Y") %></p>
