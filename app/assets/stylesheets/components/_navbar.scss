@@ -45,3 +45,15 @@
 .navbar-btn:active, .navbar-btn:hover {
   text-decoration: none;
 }
+
+.img-navbar-avatar-active {
+  border-radius: 100%;
+  width: 42px;
+  border: 3px solid #82B2DE;
+}
+
+.img-navbar-avatar {
+  border-radius: 100%;
+  width: 42px;
+  border: 3px solid #7C7C7C;
+}
