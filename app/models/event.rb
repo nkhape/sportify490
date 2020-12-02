@@ -3,7 +3,7 @@ class Event < ApplicationRecord
   has_many :bookings
   has_many :posts, dependent: :destroy
   has_many :users, through: :bookings
-
+  validates :date, presence: true 
 
   include PgSearch::Model
   pg_search_scope :global_search, 
