@@ -5,6 +5,10 @@ class EventPolicy < ApplicationPolicy
     end
   end
 
+  def index?
+    true
+  end
+
   def show?
     true
   end
@@ -19,5 +23,9 @@ class EventPolicy < ApplicationPolicy
 
   def destroy?
     record.user == user
+  end
+
+  def can_review?
+    user == record.user || record.users.include?(user)
   end
 end

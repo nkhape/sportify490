@@ -3,11 +3,18 @@ class EventsController < ApplicationController
 before_action :set_event, only: [:edit, :update, :show, :destroy]
 
   def index
-    if params[:search].present?
-      @events = policy_scope(Event).location_search(params[:search][:location])
-  else
-      @events = policy_scope(Event)
-  end
+    
+    @events = policy_scope(Event)
+    if params.has_key?(:search) 
+
+      @events = @events.location_search(params[:search][:location]) if params[:search][:location].present?  
+      @events = @events.sport_search(params[:search][:sport]) if params[:search][:sport].present?
+      @events = @events.date_search(params[:search][:date]) if params[:search][:date].present?
+      @events = @events.level_search(params[:search][:level]) if params[:search][:level].present?
+    else
+      @events = Event.all
+    end
+
     @markers = @events.geocoded.map do |event|
       {
         lat: event.latitude,
@@ -24,6 +31,7 @@ before_action :set_event, only: [:edit, :update, :show, :destroy]
 
     @booking = Booking.new
     @participants_request = Booking.where(event_id: params[:id])
+    @post = Post.new
   end
 
   def new

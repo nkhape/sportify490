@@ -10,9 +10,14 @@
 }
 
 .search-box {
+  display: flex;
   border: 1px solid #82b2de;
   border-radius: 4px;
-  padding: 12px 55px 12px 15px;
+  padding: 5px 15px px 15px;
+}
+
+.search_sport{
+  margin: 0;
 }
 
 .search-text {
@@ -20,11 +25,26 @@
   margin: 0;
 }
 
+.search-text input{
+  width: 100%;
+  border-color: white;
+  border: 1px solid #ffffff;
+}
+
 .search-icon {
+  background: none;
   color: $blue;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  padding-left: 3px;
 }
 
 .filter-icon {
   font-size: 40px;
   color: $blue;
+  padding-left: 20px;
+  padding-right: 5px;
 }
