@@ -15,4 +15,5 @@ Rails.application.routes.draw do
 
   resources :search, only: [ :index ]
   resources :posts, only: :destroy
+  get "thanks", to: "pages#thanks", as: "thanks"
 end
