@@ -65,7 +65,7 @@
 }
 
 .fa-star {
-  font-size: 30px;
+  font-size: 26px;
   color: $yellow
 }
 
@@ -74,6 +74,12 @@
   margin-top: 20px;
   padding-top: 20px;
 }
+
+.btn-dropdown {
+  background-color: $blue;
+  color: white;
+}
+
 
 .level-green {
   background: $green;

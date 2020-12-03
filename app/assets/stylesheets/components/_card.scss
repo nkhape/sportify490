@@ -5,7 +5,6 @@
 }
 
 .card-event {
-  max-width: 345px;
   background-color: white;
   box-shadow: 0 0 8px rgba(0,0,0,0.2);
   text-align: center;
@@ -42,6 +41,13 @@
   color: white;
 }
 
+.status-category {
+  background: $gray;
+  border-radius: 10px;
+  padding: 2px 10px;
+  color: white;
+}
+
 .card-content {
   margin-left: 15px;
 }
@@ -66,6 +72,7 @@
   display: flex;
   justify-content: space-between;
   position: relative;
+  align-items: center;
 }
 
 .card-details p {
@@ -105,13 +112,12 @@
   top: 0;
   left: 0;
   text-decoration: none;
-  z-index: 10; /* Places the link above everything else in the div */
   background-color: #FFF; /* Fix to make div clickable in IE */
   opacity: 1 !important;
 }
 
 .menu-height{
-  min-height: 20px;
+  min-height: 15px;
 }
 
 .dropdown-z {
@@ -123,3 +129,14 @@
   border-radius: 3px;
 }
 
+.test:after {
+  content: '\2807';
+  color: $gray;
+  font-size: 30px;
+  background-color: white;
+  }
+
+button.test {
+  border: none;
+  background-color: white;
+}

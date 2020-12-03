@@ -16,7 +16,7 @@
       </div>
       <div class="d-flex align-content-center">
         <i class="fas fa-users mr-2 icon-blue pt-1"></i>
-        <p> <%= @event.bookings.count %> / <%= @event.capacity %></p>
+        <p> <%= @event.bookings.count +1  %> / <%= @event.capacity %></p>
       </div>
     </div>
   </div>
@@ -42,7 +42,7 @@
           </div>
           <% if booking.status == "pending" %>
             <div>
-              <button type="button" class="btn btn-primary dropdown-button dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button type="button" class="btn btn-dropdown btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <%= booking.status %>
               </button>
               <div class="dropdown-menu">
@@ -56,7 +56,7 @@
             </div>
            <% else %>
             <div>
-              <button type="button" class="btn btn-primary dropdown-button dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button type="button" class="btn btn-dropdown btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <%= booking.status %>
               </button>
               <div class="dropdown-menu">
