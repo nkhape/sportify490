@@ -1,7 +1,7 @@
 <div class="show-card">
   <div>
     <div class="event-name-show">
-      <h2 class=""><%= @event.name %></h2>
+      <h2 class="smaller-title"><%= @event.name %></h2>
     </div>
     <div class="d-flex justify-content-between event-info-show">
       <div class="d-flex justify-content-between">
@@ -76,10 +76,10 @@
   <div class="d-flex justify-content-between show-card-avatar">
     <div>
       <%= cl_image_tag @event.user.photo.key, class: "img-card-avatar" %>
-      <p class="center-text"><%= @event.user.username %></p>
+      <p class="mt-1 center-text"><%= @event.user.username %></p>
     </div>
     <div>
-      <p class="text-background"><%= @event.description %></p>
+      <p class="ml-3 text-background"><%= @event.description %></p>
     </div>
   </div>
 
@@ -157,7 +157,7 @@
 </div>
 
 <div class="container comments">
-  <h2>Comments</h2>
+  <h2 class="smaller-h2">Ask a question...</h2>
   <div>
     <% @event.posts.each do |post| %>
       <div id="post-<%= post.id  %>">
