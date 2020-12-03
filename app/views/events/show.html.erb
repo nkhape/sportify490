@@ -41,7 +41,7 @@
           </div>
           <% if booking.status == "pending" %>
             <div>
-              <button type="button" class="btn btn-primary dropdown-button dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button type="button" class="btn btn-dropdown btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <%= booking.status %>
               </button>
               <div class="dropdown-menu">
@@ -55,7 +55,7 @@
             </div>
            <% else %>
             <div>
-              <button type="button" class="btn btn-primary dropdown-button dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button type="button" class="btn btn-dropdown btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <%= booking.status %>
               </button>
               <div class="dropdown-menu">

@@ -51,20 +51,21 @@
                   <p><span class="card-category"><%= event.sport.capitalize %></span></p>
                 </div>
 
-                  <div class="card-price dropdown-z">
+                  <div class="card-price dropdown-z d-flex">
                     <%# Dynamically change the amount of bookings made for that event + add if statement to change color of text %>
                     <% @bookings.each do |booking| %>
                       <% if booking.event == event %>
-                        <div>
-                          <button type="button" class="btn btn-primary dropdown-button dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <%= booking.status %>
+                      <p class="card-details mr-2"><span class="status-category"><%= booking.status %></span></p>
+                        <div class="dropdown">
+                          <button type="button" class="test" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           </button>
-                          <div class="dropdown-menu">
-                            <div class="menu-height">
-                              <%= link_to 'Cancel', booking_cancel_path(booking), method: :post, class: "approve-link dropdown-item" %>
-                            </div>
+
+                         <div class="dropdown-menu ">
+                          <div class="menu-height">
+                            <%= link_to 'Cancel', booking_cancel_path(booking), method: :post, class: "approve-link dropdown-item" %>
                           </div>
                         </div>
+                      </div>
                       <% end %>
                     <% end %>
                   </div>
