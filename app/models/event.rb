@@ -5,7 +5,7 @@ class Event < ApplicationRecord
   has_many :users, through: :bookings
   has_many :reviews, dependent: :destroy
 
-  validates :date, presence: true
+  validates :date, :capacity, :price, :location, :sport, :level, :description, :name, presence: true
 
   include PgSearch::Model
   pg_search_scope :global_search,

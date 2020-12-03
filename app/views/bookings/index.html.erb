@@ -41,14 +41,14 @@
                 </div>
                 <div class="card-content">
                   <h3><%= event.name.truncate(26) %></h3>
-                  <p><i class="far fa-calendar-alt icon mr-1"></i> <%= event.date.strftime("%d/%m/%Y") %> <span class="ml-2"><i class="far fa-clock icon mr-1"></i> <%= event.date.strftime("%H:%M") %></span></p>
-                  <p><i class="fas fa-location-arrow icon mr-1"></i> <%= event.location.truncate(29) %></p>
+                  <p><i class="far fa-calendar-alt icon-blue mr-1"></i> <%= event.date.strftime("%d/%m/%Y") %> <span class="ml-2"><i class="far fa-clock icon-blue mr-1"></i> <%= event.date.strftime("%H:%M") %></span></p>
+                  <p><i class="fas fa-location-arrow icon-blue mr-1"></i> <%= event.location.truncate(29) %></p>
                 </div>
 
               </div>
               <div class="card-details">
                 <div>
-                  <p><span class="card-category"><%= event.sport %></span></p>
+                  <p><span class="card-category"><%= event.sport.capitalize %></span></p>
                 </div>
 
                   <div class="card-price dropdown-z d-flex">

@@ -39,7 +39,14 @@ body {
 }
 
 .btn-outline-primary:active {
-  color: $black !important;
-  font-weight: bold;
-  background-color: $light-gray !important;
+  color: white !important;
+  font-weight: normal;
+}
+
+.btn-outline-primary:hover {
+  color: white !important;
+}
+
+.btn-primary {
+  color: white !important;
 }

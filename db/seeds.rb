@@ -12,16 +12,17 @@ sports = ["golf", "running", "football", "tennis", "swimming", "badminton"]
 
 
 
-mark = User.new(
- username: "marcus",
+nick = User.new(
+ username: "nick",
  location: "Brandeburger Tor Berlin",
- email: "marcus@mark.com",
+ email: "nick@hello.com",
  password: "123456",
  description: "hello. I like Tennis."
 )
 
-mark.photo.attach(io: File.open("#{Rails.root}/db/images/marcus.jpg"), filename: "marcus.jpg")
-mark.save!
+nick.photo.attach(io: File.open("#{Rails.root}/db/images/nick.jpg"), filename: "nick.jpg")
+nick.save!
+
 
 andrea = User.new(
  username: "andrea",
@@ -102,18 +103,6 @@ sven.save!
 
 puts "All users have been created."
 
-
-event1 = Event.create(
- name: "Tennis lessons: 1 on 1",
- description: "Tennis practice for beginners. This is for everyone, who is interested in learning how to play tennis and wants to learn from a total pro (me...). 🎾",
- location: "Paradestraße 28-32, 12101 Berlin",
- price: 5,
- capacity: 2,
- level: 1,
- sport: "tennis",
- date: DateTime.new(2020,12,5,10),
- user: mark
-)
 
 event2 = Event.create(
  name: "Mid-day Football game",
@@ -221,6 +210,18 @@ event10 = Event.create(
  sport: "badminton",
  date: DateTime.new(2020,12,12,13),
  user: marvin
+)
+
+event11 = Event.create(
+ name: "Let's play some Tennis!",
+ description: "I am new to town and would love to play some tennis to knock off the rust! Join me - any level welcome! 😃",
+ location: "Paradestraße 28-32, 12101 Berlin",
+ price: 5,
+ capacity: 2,
+ level: 2,
+ sport: "tennis",
+ date: DateTime.new(2020,11,29,10),
+ user: nick
 )
 
 puts "All events have been created."
