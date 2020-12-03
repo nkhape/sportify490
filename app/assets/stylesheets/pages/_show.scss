@@ -25,7 +25,8 @@
 .text-background {
   background-color: $light-blue;
   padding: 10px;
-  margin-left: 20px;
+  border: 0.5px solid $blue;
+  border-radius: 5px;
 }
 
 .event-name-show {
@@ -71,7 +72,7 @@
 .comments {
   border-top: 0.5px solid #E8E8E8;
   margin-top: 20px;
-  padding-top: 10px;
+  padding-top: 20px;
 }
 
 .btn-dropdown {
@@ -86,15 +87,25 @@
   padding: 2px 10px;
   color: white;
 }
+
 .level-orange {
   background: $orange;
   border-radius: 10px;
   padding: 2px 10px;
   color: white;
 }
+
 .level-red {
   background: $red;
   border-radius: 10px;
   padding: 2px 10px;
   color: white;
+}
+
+.smaller-h2 {
+  font-size: 22px;
+}
+
+.smaller-title {
+  font-size: 28px;
 }

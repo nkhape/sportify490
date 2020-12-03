@@ -1,7 +1,7 @@
 <div class="show-card">
   <div>
     <div class="event-name-show">
-      <h2 class=""><%= @event.name %></h2>
+      <h2 class="smaller-title"><%= @event.name %></h2>
     </div>
     <div class="d-flex justify-content-between event-info-show">
       <div class="d-flex justify-content-between">
@@ -14,8 +14,9 @@
           <p class="text-danger ml-2"><span class="level-red"><%= @event.level %></span></p>
         <% end %>
       </div>
-      <div>
-        <p> <%= @event.bookings.count + 1 %> / <%= @event.capacity %></p>
+      <div class="d-flex align-content-center">
+        <i class="fas fa-users mr-2 icon-blue pt-1"></i>
+        <p> <%= @event.bookings.count +1  %> / <%= @event.capacity %></p>
       </div>
     </div>
   </div>
@@ -76,10 +77,10 @@
   <div class="d-flex justify-content-between show-card-avatar">
     <div>
       <%= cl_image_tag @event.user.photo.key, class: "img-card-avatar" %>
-      <p class="center-text"><%= @event.user.username %></p>
+      <p class="mt-1 center-text"><%= @event.user.username %></p>
     </div>
     <div>
-      <p class="text-background"><%= @event.description %></p>
+      <p class="ml-3 text-background"><%= @event.description %></p>
     </div>
   </div>
 
@@ -157,7 +158,7 @@
 </div>
 
 <div class="container comments">
-  <h2>Comments</h2>
+  <h2 class="smaller-h2">Ask a question...</h2>
   <div>
     <% @event.posts.each do |post| %>
       <div id="post-<%= post.id  %>">
@@ -168,8 +169,8 @@
               <small class="ml-1"><%= post.created_at.strftime("%a %b %e at %l:%M%p") %></small>
             </i>
           </div>
-          <div>
             <% if policy(post).destroy? %>
+          <div>
               <%= link_to "", post_path(post), method: :delete, data: { confirm: 'Are you sure you want to delete this comment?' }, class: "mr-2 far fa-trash-alt" %>
           </div>
             <% end %>
