@@ -6,9 +6,9 @@
     <div class="d-flex justify-content-between event-info-show">
       <div class="d-flex justify-content-between">
         <p><span class="card-category"><%= @event.sport.capitalize %></span></p>
-        <% if @event.level == "Beginner" %>
+        <% if @event.level == "beginner" %>
           <p class="text-success ml-2"><span class="level-green"><%= @event.level %></span></p>
-        <% elsif @event.level == "Intermediate" %>
+        <% elsif @event.level == "intermediate" %>
           <p class="text-warning ml-2"><span class="level-orange"><%= @event.level %></span></p>
         <% else %>
           <p class="text-danger ml-2"><span class="level-red"><%= @event.level %></span></p>
