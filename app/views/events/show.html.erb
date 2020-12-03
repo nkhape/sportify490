@@ -14,7 +14,8 @@
           <p class="text-danger ml-2"><span class="level-red"><%= @event.level %></span></p>
         <% end %>
       </div>
-      <div>
+      <div class="d-flex align-content-center">
+        <i class="fas fa-users mr-2 icon-blue pt-1"></i>
         <p> <%= @event.bookings.count %> / <%= @event.capacity %></p>
       </div>
     </div>
