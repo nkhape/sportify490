@@ -49,9 +49,9 @@
           <%= link_to "See item", event_path(event) %>
             <div class="card-event-description">
               <div class="card-level">
-                <% if event.level == "Beginner" %>
+                <% if event.level == "beginner" %>
                   <p class="text-success font-weight-bold mb-1"><%= event.level %></p>
-                <% elsif event.level == "Intermediate" %>
+                <% elsif event.level == "intermediate" %>
                   <p class="text-warning font-weight-bold mb-1"><%= event.level %></p>
                 <% else %>
                   <p class="text-danger font-weight-bold mb-1"><%= event.level %></p>
@@ -70,11 +70,11 @@
                   <p><i class="far fa-calendar-alt icon-blue mr-1"></i> <%= event.date.strftime("%d/%m/%Y") %> <span class="ml-2"><i class="far fa-clock icon-blue mr-1"></i> <%= event.date.strftime("%H:%M") %></span></p>
                   <p><i class="fas fa-location-arrow icon-blue mr-1 pt-2"></i> <%= event.location.truncate(27) %></p>
                 </div>
-                
+
               </div>
               <div class="card-details">
                 <div>
-                  <p><span class="card-category"><%= event.sport.capitalize %></span></p>
+                  <p><span class="card-category"><%= event.sport %></span></p>
                 </div>
                   <div class="card-price">
                     <% if event.bookings.count == event.capacity %>
