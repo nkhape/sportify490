@@ -41,7 +41,7 @@
             <p class="center-text"><%= booking.user.username %>
             <% if booking.user.reviews[0] %>
               <br>
-              <i class="fas fa-star star-user"></i><%= booking.user.reviews[0].rating %>.2
+              <i class="fas fa-star star-user"></i><%= booking.user.reviews[0].rating %>
             <% end %>
             </p>
           </div>
@@ -85,7 +85,7 @@
       <p class="mt-1 center-text"><%= @event.user.username %>
       <% if @event.user.reviews[0] %>
         <br>
-        <i class="fas fa-star star-user"></i><%= @event.user.reviews[0].rating %>.2
+        <i class="fas fa-star star-user"></i><%= @event.user.reviews[0].rating %>
       <% end %>
       </p>
     </div>
