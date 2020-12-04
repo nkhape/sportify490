@@ -168,16 +168,14 @@
 </div>
 
 <div class="container comments">
-  <h2 class="smaller-h2">Ask a question...</h2>
+  <h2 class="smaller-h2 pb-2">Ask a question...</h2>
   <div>
     <% @event.posts.each do |post| %>
       <div id="post-<%= post.id  %>">
         <div class="d-flex justify-content-between">
           <div>
-            <i>
               <span><b><%= post.user.username %></b></span>
               <small class="ml-1"><%= post.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-            </i>
           </div>
             <% if policy(post).destroy? %>
           <div>
@@ -185,7 +183,7 @@
           </div>
             <% end %>
         </div>
-        <p class="text-background"><%= post.content %></p>
+        <p class="text-background pb-2 pt-1"><%= post.content %></p>
       </div>
     <% end %>
   </div>
