@@ -43,7 +43,7 @@
               <br>
               <i class="fas fa-star star-user"></i><%= booking.user.reviews[0].rating %>.2
             <% end %>
-      </p>
+            </p>
           </div>
           <% if booking.status == "pending" %>
             <div>
@@ -85,8 +85,9 @@
       <p class="mt-1 center-text"><%= @event.user.username %>
       <% if @event.user.reviews[0] %>
         <br>
-        <i class="fas fa-star star-user"></i><%= @event.user.reviews[0].rating %>.2</p>
+        <i class="fas fa-star star-user"></i><%= @event.user.reviews[0].rating %>.2
       <% end %>
+      </p>
     </div>
     <div>
       <p class="ml-3 text-background"><%= @event.description %></p>
