@@ -23,18 +23,15 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
+
   <body>
     <%= render 'shared/flashes' %>
-    <% unless action_name == "home" %>
-      <%= render 'shared/homelink' %>
-      <div class="content">
-    <% end %>
-      <%= yield %>
-    <% unless action_name == "home" %>
-    </div>
-    <% end %>
-    <% unless action_name == "thanks" %>
+    <div class="main-content">
       <%= render 'shared/navbar' %>
-    <% end %>
+      <div class="content">
+        <%= yield %>
+      </div>
+      <%= render 'shared/footer' %>
+    </div>
   </body>
 </html>

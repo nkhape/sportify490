@@ -1,31 +1,36 @@
 <div class="container">
+  <form class="form-inline searchbar justify-content-center">
+ 
+      <%= simple_form_for :search, url: events_path, method: "GET", input_html: { class: 'form-block' } do |f| %>
+       
+          <div class="form-group">
+            <%= f.input :sport, input_html: { placeholder: "Type your sport" }, label:false %>
+          </div>
+          <div class="form-group">
+            <%= f.input :date, as: :string, placeholder: "Pick a date", required: false, input_html: {class: "datepicker form-data"}, label:false %>
+          </div>
+          <div class="form-group">
+            <%= f.input :level, label:false, prompt: 'level', collection: Event.levels.map{ |l| [l.first, l.second] }, required: false, label_method: :first, value_method: :second%>
+          </div>
+          <div class="form-group">
+            <%= f.input :location, label:false, required: false, placeholder: 'Enter a location for your event' %>
+          </div>
+          <div class="form-group form-button">
+            <%= f.button :submit, 'Search', class: "btn btn-primary" %>
+          </div>
+      <% end %>
+   
+    
+  </form>
 
-  <div class="search-section">
-
-    <div class="search-box">
-    <%= simple_form_for :search, url: events_path, method: "GET", input_html: { class: 'form-block' } do |f| %>
-      <div class="container d-flex">
-        <%= button_tag type: 'submit', class:"search-icon" do %>
-        <i class="fas fa-search" aria-hidden="true"></i>
-        <% end %>
-
-        <div class="search-text">
-        <%= f.input :sport, input_html: { placeholder: "Type your sport" }, label:false %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-    <a class="filter-element" data-toggle="collapse" href="#collapseFilters"><i class="fas fa-sliders-h filter-icon"></i></a>
-  </div>
-
-    <div id="collapseFilters" class="container collapse form">
+  <div id="collapseFilters" class="container collapse form">
     <%= simple_form_for :search, url: events_path, method: "GET", html: { class: 'form-block' } do |f| %>
       <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
       <%= f.input :level, collection: Event.levels.map{ |l| [l.first, l.second] }, required: false, label_method: :first, value_method: :second%>
       <%= f.input :location, required: false, placeholder: 'Enter a location for your event' %>
       <%= f.button :submit, 'Search', class: "btn btn-primary btn-lg btn-form mt-3" %>
     <% end %>
-    </div>
+  </div>
   <%#  %>
 
     <!-- <%# MAP CODE %>
@@ -41,52 +46,63 @@
     <%#  %>
     </div>
     -->
-
-  <div class="cards-events row">
-    <% @events.each do |event| %>
-        <div class="col-12 col-lg-3">
-          <div class="card-event">
-          <%= link_to "See item", event_path(event) %>
-            <div class="card-event-description">
-              <div class="card-level">
-                <% if event.level == "beginner" %>
-                  <p class="text-success font-weight-bold mb-1"><%= event.level %></p>
-                <% elsif event.level == "intermediate" %>
-                  <p class="text-warning font-weight-bold mb-1"><%= event.level %></p>
-                <% else %>
-                  <p class="text-danger font-weight-bold mb-1"><%= event.level %></p>
-                <% end %>
-              </div>
-              <div class="card-title">
-                <div class="card-avatar">
-                <% if event.user.photo.attached? %>
-                  <%= cl_image_tag event.user.photo.key, class: "img-card-avatar" %>
-                <% else %>
-                  <%= image_tag 'avatar-backup.svg', width: 74 %>
-                <% end %>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-lg-7">
+        <!-- <div class="cards-events"> -->
+          <% @events.each do |event| %>
+            <div class="card-event">
+            <%= link_to "See item", event_path(event) %>
+              <div class="card-event-description">
+                <div class="card-level">
+                  <% if event.level == "beginner" %>
+                    <p class="text-success font-weight-bold mb-1"><%= event.level %></p>
+                  <% elsif event.level == "intermediate" %>
+                    <p class="text-warning font-weight-bold mb-1"><%= event.level %></p>
+                  <% else %>
+                    <p class="text-danger font-weight-bold mb-1"><%= event.level %></p>
+                  <% end %>
                 </div>
-                <div class="card-content">
-                  <h3><%= event.name.truncate(30) %></h3>
-                  <p><i class="far fa-calendar-alt icon-blue mr-1"></i> <%= event.date.strftime("%d/%m/%Y") %> <span class="ml-2"><i class="far fa-clock icon-blue mr-1"></i> <%= event.date.strftime("%H:%M") %></span></p>
-                  <p><i class="fas fa-location-arrow icon-blue mr-1 pt-2"></i> <%= event.location.truncate(27) %></p>
-                </div>
-
-              </div>
-              <div class="card-details">
-                <div>
-                  <p><span class="card-category"><%= event.sport.downcase %></span></p>
-                </div>
-                  <div class="card-price">
-                    <% if event.bookings.count == event.capacity %>
-                      <p style="color: #E8E8E8"><%= event.bookings.count + 1 %> / <%= event.capacity %> </p>
+                <div class="card-title">
+                  <div class="card-avatar">
+                    <% if event.user.photo.attached? %>
+                      <%= cl_image_tag event.user.photo.key, class: "img-card-avatar" %>
                     <% else %>
-                      <p><%= event.bookings.count + 1 %> / <%= event.capacity %> </p>
+                      <%= image_tag 'avatar-backup.svg', width: 74 %>
                     <% end %>
                   </div>
+                  <div class="card-content">
+                    <h3><%= event.name.truncate(30) %></h3>
+                    <p><i class="far fa-calendar-alt icon-blue mr-1"></i> <%= event.date.strftime("%d/%m/%Y") %> <span class="ml-2"><i class="far fa-clock icon-blue mr-1"></i> <%= event.date.strftime("%H:%M") %></span></p>
+                    <p><i class="fas fa-location-arrow icon-blue mr-1 pt-2"></i> <%= event.location.truncate(27) %></p>
+                  </div>
+
+                </div>
+                <div class="card-details">
+                  <div>
+                    <p><span class="card-category"><%= event.sport.downcase %></span></p>
+                  </div>
+                   <!-- <div class="card-price">
+                      <% if event.bookings.count == event.capacity %>
+                        <p style="color: #E8E8E8"><%= event.bookings.count + 1 %> / <%= event.capacity %> </p>
+                      <% else %>
+                        <p><%= event.bookings.count + 1 %> / <%= event.capacity %> </p>
+                      <% end %>
+                    </div>
+                    -->
+                </div>
               </div>
             </div>
-          </div>
+          <% end %>
+        <!--      </div> -->
+      </div>
+      <div class="col-12 col-lg-5">
+        <div id="showmap"
+           style="width: 100%; height: 100vh;"
+           data-marker="<%= @marker.to_json %>"
+           data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
-    <% end %>
+      </div>
+    </div>
   </div>
 </div>

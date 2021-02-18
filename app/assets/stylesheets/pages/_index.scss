@@ -3,6 +3,21 @@
 @import "show";
 @import "thanks";
 
+.form-control {
+  background-color: white !important; 
+  border: 1px solid $gray;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+.form-button {
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+.searchbar {
+  margin: 20px 0;
+}
 .search-section {
   display: flex;
   justify-content: space-between;
