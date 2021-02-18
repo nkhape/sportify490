@@ -1,10 +1,16 @@
-.navbar {
-  overflow: hidden;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  padding: 0px;
-  z-index: 9999;
+.navbar-brand {
+  justify-content: space-between;
+  font-family: "Pacifico";
+  font-size: 1.5rem;
+  color: $gray;
+}
+
+.navbar-lewagon {
+  justify-content: space-between;
+}
+
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
 }
 
 .nav-img {
@@ -16,34 +22,6 @@
   margin: 0 !important;
   font-size: 22px;
   color: $blue;
-}
-
-.nav-text p {
-  font-size: 10px;
-  margin: 0 !important;
-  display: block;
-}
-
-.nav-text-active {
-  color: $blue;
-  font-weight: bold;
-}
-
-.navbar-lewagon {
-  justify-content: space-around;
-  background: white;
-}
-
-.navbar-btn {
-  margin: 10px 0;
-  vertical-align: top;
-  display: inline-block;
-  text-align: center;
-  color: $gray;
-}
-
-.navbar-btn:active, .navbar-btn:hover {
-  text-decoration: none;
 }
 
 .img-navbar-avatar-active {
