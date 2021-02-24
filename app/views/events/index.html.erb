@@ -3,19 +3,19 @@
  
       <%= simple_form_for :search, url: events_path, method: "GET", input_html: { class: 'form-block' } do |f| %>
        
-          <div class="form-group">
+          <div>
             <%= f.input :sport, input_html: { placeholder: "Type your sport" }, label:false %>
           </div>
-          <div class="form-group">
+          <div>
             <%= f.input :date, as: :string, placeholder: "Pick a date", required: false, input_html: {class: "datepicker form-data"}, label:false %>
           </div>
-          <div class="form-group">
+          <div>
             <%= f.input :level, label:false, prompt: 'level', collection: Event.levels.map{ |l| [l.first, l.second] }, required: false, label_method: :first, value_method: :second%>
           </div>
-          <div class="form-group">
+          <div>
             <%= f.input :location, label:false, required: false, placeholder: 'Enter a location for your event' %>
           </div>
-          <div class="form-group form-button">
+          <div class="form-button">
             <%= f.button :submit, 'Search', class: "btn btn-primary" %>
           </div>
       <% end %>
@@ -23,6 +23,7 @@
     
   </form>
 
+<!-->
   <div id="collapseFilters" class="container collapse form">
     <%= simple_form_for :search, url: events_path, method: "GET", html: { class: 'form-block' } do |f| %>
       <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
@@ -31,6 +32,7 @@
       <%= f.button :submit, 'Search', class: "btn btn-primary btn-lg btn-form mt-3" %>
     <% end %>
   </div>
+
   <%#  %>
 
     <!-- <%# MAP CODE %>
