@@ -13,7 +13,7 @@ Sportify aims to solve the pain of people, who would like to play a sports, but 
 
 Sportify allows users to search (using filters e.g. location, skill level, date, sport,...) for sports events, which they can then join. They are also able to create their own events and accept / reject other users, who want to join. Users can then rate players, who they've played with. There's also a messaging feature that lets people ask questions about an event. 🙌
 
-You can check out the app [HERE](www.sportify.social)
+You can check out the app [HERE](https://www.sportify.social)
 
 **Here's a sneak peak of what the app looks like:**
 
