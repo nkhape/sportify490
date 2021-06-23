@@ -11,4 +11,6 @@ class User < ApplicationRecord
   has_many :joint_events, through: :bookings, source: :event
   has_one_attached :photo
   # validates :email, format: { with /\A[^@\s]+@[^@\s]+\z/}
+
+  validates :email, presence: true
 end

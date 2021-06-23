@@ -1,0 +1,18 @@
+tennis:
+  name: "Tennis"
+  description: "Manage your staff calendar"
+  date: DateTime.new(2020,12,5,12)
+  capacity: 2
+  price: 2
+  sport: "tennis"
+  level: 2
+  user: 1
+football:
+  name: "Football"
+  description: "Rent a vintage car"
+  date: DateTime.new(2020,12,5,12)
+  capacity: 2
+  price: 2
+  sport: "tennis"
+  level: 2
+  user: 1
