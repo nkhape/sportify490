@@ -18,7 +18,8 @@ before_action :set_event, only: [:edit, :update, :show, :destroy]
     @markers = @events.geocoded.map do |event|
       {
         lat: event.latitude,
-        lng: event.longitude
+        lng: event.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { event: event })
       }
     end
   end

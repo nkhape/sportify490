@@ -1,196 +1,202 @@
-<div class="show-card">
-  <div>
-    <div class="event-name-show">
-      <h2 class="smaller-title"><%= @event.name %></h2>
-    </div>
-    <div class="d-flex justify-content-between event-info-show">
-      <div class="d-flex justify-content-between">
-        <p><span class="card-category"><%= @event.sport.downcase %></span></p>
-        <% if @event.level == "beginner" %>
-          <p class="text-success ml-2"><span class="level-green"><%= @event.level %></span></p>
-        <% elsif @event.level == "intermediate" %>
-          <p class="text-warning ml-2"><span class="level-orange"><%= @event.level %></span></p>
-        <% else %>
-          <p class="text-danger ml-2"><span class="level-red"><%= @event.level %></span></p>
-        <% end %>
-      </div>
-      <div class="d-flex align-content-center">
-        <i class="fas fa-users mr-2 icon-blue pt-1"></i>
-        <p> <%= @event.bookings.count + 1  %> / <%= @event.capacity %></p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<% if current_user == @event.user %>
-  <div class="container">
-    <%if @event.date > Time.now%>
-      <% if @participants_request.all? { |booking| booking.status == "cancelled" }%>
-        <h3 class="text-center">Manage request</h3>
-        <p>You don't have any pending request.</p>
-      <% else %>
-        <h3 class="text-center">Manage request</h3>
-      <% end %>
-
-      <div class="d-flex justify-content-between show-card-avatar">
-        <%# Dynamically change the amount of bookings made for that event + add if statement to change color of text %>
-        <% @participants_request.each do |booking| %>
-         <% if booking.status != "cancelled" %>
-           <div>
-            <%= cl_image_tag booking.user.photo.key, class: "img-card-avatar-booking" %>
-            <p class="center-text"><%= booking.user.username %>
-            <% if booking.user.reviews[0] %>
-              <br>
-              <i class="fas fa-star star-user"></i> <%= booking.user.reviews[0].rating %>.0
-            <% end %>
-            </p>
-          </div>
-          <% if booking.status == "pending" %>
-            <div>
-              <button type="button" class="btn btn-dropdown btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= booking.status %>
-              </button>
-              <div class="dropdown-menu">
-                <div class="menu-height">
-                  <%= link_to 'Approve', booking_accept_path(booking), method: :post, class: "approve-link dropdown-item" %>
-                </div>
-                <div class="menu-height">
-                  <%= link_to 'Cancel', booking_cancel_path(booking), method: :post, class: "approve-link dropdown-item" %>
-                </div>
-              </div>
-            </div>
-           <% else %>
-            <div>
-              <button type="button" class="btn btn-dropdown btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <%= booking.status %>
-              </button>
-              <div class="dropdown-menu">
-                <div class="menu-height">
-                  <%= link_to 'Cancel', booking_cancel_path(booking), method: :post, class: "approve-link dropdown-item" %>
-                </div>
-              </div>
-            </div>
-          <% end %>
-          <% end %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-<% end %>
-
 <div class="container">
-  <div class="d-flex justify-content-between show-card-avatar">
+  <div class="show-card">
     <div>
-      <%= cl_image_tag @event.user.photo.key, class: "img-card-avatar" %>
-      <p class="mt-1 center-text"><%= @event.user.username %>
-      <% if @event.user.reviews[0] %>
-        <br>
-        <i class="fas fa-star star-user"></i> <%= @event.user.reviews[0].rating %>.0
-      <% end %>
-      </p>
-    </div>
-    <div>
-      <p class="ml-3 text-background"><%= @event.description %></p>
-    </div>
-  </div>
-
-<!-- Reviews -->
-  <% if policy(@event).can_review? && @event.users.present? && @event.date < Time.now %> <%# && @event.date < Time.now %>
-   <div class="show-card-desc">
-    <h4>Rate the experience you had with the other players!</h3>
-      <% @event.users.each do |user| %>
-        <div class="d-flex align-items-center my-3">
-          <div>
-            <% unless user == current_user %>
-            <% if user.photo.attached? %>
-              <%= cl_image_tag user.photo.key, class: "img-review" %>
-            <% else %>
-              <%= image_tag 'avatar-backup.svg', width: 50 %>
-            <% end %>
-            <p class="center-text"><%= user.username %></p>
-          </div>
-          <div class="ml-3">
-            <p>
-            <% 5.times do |time| %>
-              <% review = user.reviews.where(reviewer: current_user)&.first %>
-              <% if review.blank? %>
-                <%= link_to event_reviews_path([@event, Review.new], rating: "#{time + 1}", user_id: user.id), method: :post do %>
-                  <i class="far fa-star" id="rating-<%= time + 1 %>"></i>
-                <% end %>
-              <% else %>
-                  <i class="fa<%= time + 1 <= review.rating ? 's' : 'r' %> fa-star" id="rating-<%= time + 1 %>"></i>
-              <% end %>
-            <% end %>
-            </p>
-            <%# <%= link_to "Remove review", event_reviews_path, method: :delete, data: { confirm: "Delete this review?" } %>
-          </div>
-        </div>
-        <% end %>
-      <% end %>
-    </div>
-  <% end %>
-
-  <div class="show-card-desc">
-    <div>
-      <p><i class="icon-blue far fa-calendar-alt mr-2"></i> <%= @event.date.strftime("%d/%m/%Y") %></p>
-    </div>
-    <div>
-      <p><i class="icon-blue far fa-clock mr-2"></i> <%= @event.date.strftime("%l:%M%p") %></p>
-    </div>
-    <div>
-      <p><i class="icon-blue fas fa-money-bill-wave mr-2"></i> <%= @event.price %>€</p>
-    </div>
-    <div>
-      <p><i class="icon-blue fas fa-location-arrow mr-2"></i> <%= @event.location %></p>
-    </div>
-  </div>
-</div>
-
-<div id="showmap"
-   style="width: 100%; height: 150px;"
-   data-marker="<%= @marker.to_json %>"
-   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-
-<div class="d-flex justify-content-center align-content-center">
-  <% if @event.user != current_user %>
-    <%= simple_form_for [@event, @booking] do |f| %>
-        <%= f.button :submit, 'Join!', class: "btn btn-primary text-white btn-md" %>
-    <% end %>
-  <% end %>
-
-  <% if policy(@event).update? %>
-    <%= link_to 'Edit', edit_event_path(@event), class: "btn btn-outline-primary btn-md my-2" %>
-  <% end %>
-
-  <% if policy(@event).destroy? %>
-    <%= link_to 'Delete', @event, method: :delete, data: { confirm: 'Are you sure you want to delete this event?' }, class: "ml-3 btn btn-outline-danger btn-md my-2" %>
-  <% end %>
-</div>
-
-<div class="container comments">
-  <h2 class="smaller-h2 pb-2">Ask a question...</h2>
-  <div>
-    <% @event.posts.each do |post| %>
-      <div id="post-<%= post.id  %>">
+      <div class="event-name-show">
+        <p><%= @event.date.strftime("%A, %b %d") %></p>
+        <h2 class="smaller-title"><%= @event.name %></h2>
+      </div>
+      <div class="d-flex justify-content-between event-info-show">
         <div class="d-flex justify-content-between">
-          <div>
-              <span><b><%= post.user.username %></b></span>
-              <small class="ml-1"><%= post.created_at.strftime("%a %b %e at %l:%M%p") %></small>
-          </div>
-            <% if policy(post).destroy? %>
-          <div>
-              <%= link_to "", post_path(post), method: :delete, data: { confirm: 'Are you sure you want to delete this comment?' }, class: "mr-2 far fa-trash-alt" %>
-          </div>
-            <% end %>
+          <p><span class="card-category"><%= @event.sport.downcase %></span></p>
+          <% if @event.level == "beginner" %>
+            <p class="text-success ml-2"><span class="level-green"><%= @event.level %></span></p>
+          <% elsif @event.level == "intermediate" %>
+            <p class="text-warning ml-2"><span class="level-orange"><%= @event.level %></span></p>
+          <% else %>
+            <p class="text-danger ml-2"><span class="level-red"><%= @event.level %></span></p>
+          <% end %>
         </div>
-        <p class="comment-background pb-2 pt-1"><%= post.content %></p>
+        <div class="d-flex align-content-center">
+          <i class="fas fa-users mr-2 icon-blue pt-1"></i>
+          <p> <%= @event.bookings.count + 1  %> / <%= @event.capacity %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% if current_user == @event.user %>
+    <div class="container">
+      <%if @event.date > Time.now%>
+        <% if @participants_request.all? { |booking| booking.status == "cancelled" }%>
+          <h3 class="text-center">Manage request</h3>
+          <p>You don't have any pending request.</p>
+        <% else %>
+          <h3 class="text-center">Manage request</h3>
+        <% end %>
+
+        <div class="d-flex justify-content-between show-card-avatar">
+          <%# Dynamically change the amount of bookings made for that event + add if statement to change color of text %>
+          <% @participants_request.each do |booking| %>
+          <% if booking.status != "cancelled" %>
+            <div>
+              <%= cl_image_tag booking.user.photo.key, class: "show-avatar" %>
+              <p class="center-text"><%= booking.user.username %>
+              <% if booking.user.reviews[0] %>
+                <br>
+                <i class="fas fa-star star-user"></i> <%= booking.user.reviews[0].rating %>.0
+              <% end %>
+              </p>
+            </div>
+            <% if booking.status == "pending" %>
+              <div>
+                <button type="button" class="btn btn-dropdown btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%= booking.status %>
+                </button>
+                <div class="dropdown-menu">
+                  <div class="menu-height">
+                    <%= link_to 'Approve', booking_accept_path(booking), method: :post, class: "approve-link dropdown-item" %>
+                  </div>
+                  <div class="menu-height">
+                    <%= link_to 'Cancel', booking_cancel_path(booking), method: :post, class: "approve-link dropdown-item" %>
+                  </div>
+                </div>
+              </div>
+            <% else %>
+              <div>
+                <button type="button" class="btn btn-dropdown btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%= booking.status %>
+                </button>
+                <div class="dropdown-menu">
+                  <div class="menu-height">
+                    <%= link_to 'Cancel', booking_cancel_path(booking), method: :post, class: "approve-link dropdown-item" %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="container">
+    <div class="d-flex justify-content-between show-card-avatar">
+      <div>
+        <%= cl_image_tag @event.user.photo.key, class: "show-avatar" %>
+        <p class="mt-1 center-text"><%= @event.user.username %>
+        <% if @event.user.reviews[0] %>
+          <br>
+          <i class="fas fa-star star-user"></i> <%= @event.user.reviews[0].rating %>.0
+        <% end %>
+        </p>
+      </div>
+      <div>
+        <p class="ml-3 text-background"><%= @event.description %></p>
+      </div>
+    </div>
+
+  <!-- Reviews -->
+    <% if policy(@event).can_review? && @event.users.present? && @event.date < Time.now %> <%# && @event.date < Time.now %>
+    <div class="show-card-desc">
+      <h4>Rate the experience you had with the other players!</h3>
+        <% @event.users.each do |user| %>
+          <div class="d-flex align-items-center my-3">
+            <div>
+              <% unless user == current_user %>
+              <% if user.photo.attached? %>
+                <%= cl_image_tag user.photo.key, class: "img-review" %>
+              <% else %>
+                <%= image_tag 'avatar-backup.svg', width: 50 %>
+              <% end %>
+              <p class="center-text"><%= user.username %></p>
+            </div>
+            <div class="ml-3">
+              <p>
+              <% 5.times do |time| %>
+                <% review = user.reviews.where(reviewer: current_user)&.first %>
+                <% if review.blank? %>
+                  <%= link_to event_reviews_path([@event, Review.new], rating: "#{time + 1}", user_id: user.id), method: :post do %>
+                    <i class="far fa-star" id="rating-<%= time + 1 %>"></i>
+                  <% end %>
+                <% else %>
+                    <i class="fa<%= time + 1 <= review.rating ? 's' : 'r' %> fa-star" id="rating-<%= time + 1 %>"></i>
+                <% end %>
+              <% end %>
+              </p>
+              <%# <%= link_to "Remove review", event_reviews_path, method: :delete, data: { confirm: "Delete this review?" } %>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
       </div>
     <% end %>
+
+    <div class="show-card-desc">
+      <div>
+        <p class="mb-2"><i class="icon-blue far fa-calendar-alt mr-2"></i> <%= @event.date.strftime("%A, %b %d") %></p>
+      </div>
+      <div>
+        <p class="mb-2"><i class="icon-blue far fa-clock mr-2"></i> <%= @event.date.strftime("%l:%M%p") %></p>
+      </div>
+      <div>
+        <p class="mb-2"><i class="icon-blue fas fa-money-bill-wave mr-2"></i> <%= @event.price %>€</p>
+      </div>
+      <div>
+        <p class="mb-4"><i class="icon-blue fas fa-location-arrow mr-2"></i> <%= @event.location %></p>
+      </div>
+    </div>
+  </div>
+  <div class="mt-4">
+    <h3 class="mb-3 font-weight-bold">Location</h3>
+    <div id="showmap"
+      style="width: 100%; height: 150px;"
+      data-marker="<%= @marker.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   </div>
 
-  <div>
-    <%= simple_form_for [ @event, @post ], remote: true do |f| %>
-    <%= f.input :content, label: false, placeholder: "Send Comment" %>
+  <div class="d-flex justify-content-center align-content-center">
+    <% if @event.user != current_user %>
+      <%= simple_form_for [@event, @booking] do |f| %>
+          <%= f.button :submit, 'Join!', class: "btn btn-primary text-white btn-md" %>
+      <% end %>
     <% end %>
+
+    <% if policy(@event).update? %>
+      <%= link_to 'Edit', edit_event_path(@event), class: "btn btn-outline-primary btn-md my-2" %>
+    <% end %>
+
+    <% if policy(@event).destroy? %>
+      <%= link_to 'Delete', @event, method: :delete, data: { confirm: 'Are you sure you want to delete this event?' }, class: "ml-3 btn btn-outline-danger btn-md my-2" %>
+    <% end %>
+  </div>
+
+  <div class="container comments">
+    <h2 class="smaller-h2 pb-2">Ask a question...</h2>
+    <div>
+      <% @event.posts.each do |post| %>
+        <div id="post-<%= post.id  %>">
+          <div class="d-flex justify-content-between">
+            <div>
+                <span><b><%= post.user.username %></b></span>
+                <small class="ml-1"><%= post.created_at.strftime("%a %b %e at %l:%M%p") %></small>
+            </div>
+              <% if policy(post).destroy? %>
+            <div>
+                <%= link_to "", post_path(post), method: :delete, data: { confirm: 'Are you sure you want to delete this comment?' }, class: "mr-2 far fa-trash-alt" %>
+            </div>
+              <% end %>
+          </div>
+          <p class="comment-background pb-2 pt-1"><%= post.content %></p>
+        </div>
+      <% end %>
+    </div>
+
+    <div>
+      <%= simple_form_for [ @event, @post ], remote: true do |f| %>
+      <%= f.input :content, label: false, placeholder: "Send Comment" %>
+      <% end %>
+    </div>
   </div>
 </div>
